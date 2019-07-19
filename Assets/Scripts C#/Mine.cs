@@ -196,6 +196,8 @@ public class Mine : MonoBehaviour
 
     public bool Click()
     {
+
+        
         
         if (!IsMine)
         {
