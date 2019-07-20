@@ -43,6 +43,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225e1d1386ef1b04c832e021885f1afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
   mineClicked: {fileID: 21300000, guid: e67a66f6bc3ffab4ab57d48d8dd5f5fd, type: 3}
   mineOpen: {fileID: 21300000, guid: 5aba6d8798c38334f9768875dd059575, type: 3}
   mine: {fileID: 21300000, guid: 20f6efab774c7a941bf19063d0e90430, type: 3}
+  openbomb: {fileID: 0}
+  openredbomb: {fileID: 0}
+  openmine_1: {fileID: 0}
+  openmine_2: {fileID: 0}
+  openmine_3: {fileID: 0}
+  openmine_4: {fileID: 0}
+  openmine_5: {fileID: 0}
+  anzmines: 0
+  length_x: 0
+  length_y: 0
+  "spielz\xFCge": 0
+  gewonnen: 0
+  message: 0
+  myPrefab: {fileID: 0}

@@ -17,8 +17,10 @@ public class GameController : MonoBehaviour
     public Sprite openmine_3;
     public Sprite openmine_4;
     public Sprite openmine_5;
+    public Sprite openmine_6;
+    public Sprite openmine_7;
+    public Sprite openmine_8;
     private Mine[,] spielfeld;
-    private Transform transform;
     private GameObject gameController;
     public bool Alreadyclicked { get; set; } = false;
     public int anzmines;
@@ -28,6 +30,8 @@ public class GameController : MonoBehaviour
     public int spielzüge = 0;
     public bool gewonnen = false;
     public bool message = false;
+    public GameObject myPrefab;
+    private GameObject camera;
 
     public Mine[,] GetSpielFeld()
     {
@@ -54,11 +58,11 @@ public class GameController : MonoBehaviour
 
     public void openBombs()
     {
-        foreach (var VARIABLE in spielfeld)
+        foreach (var m in spielfeld)
         {
-            if (VARIABLE.IsMine)
+            if (m.IsMine)
             {
-                VARIABLE.SetOwnSprite(openbomb);
+                m.State = Mine.MineState.bomb;
 
             }
 
@@ -84,43 +88,43 @@ public class GameController : MonoBehaviour
 
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i + 1, j]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i + 1, j]);
                 }
                 catch
                 { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i - 1, j]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i - 1, j]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i + 1, j + 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i + 1, j + 1]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i - 1, j - 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i - 1, j - 1]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i + 1, j - 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i + 1, j - 1]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i - 1, j + 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i - 1, j + 1]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i, j + 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i, j + 1]);
                 }
                 catch { }
                 try
                 {
-                    spielfeld[i, j].minesinnear += isbomb(spielfeld[i, j - 1]);
+                    spielfeld[i, j].Minesinnear += isbomb(spielfeld[i, j - 1]);
                 }
                 catch { }
 
@@ -135,14 +139,14 @@ public class GameController : MonoBehaviour
         {
 
             VARIABLE.IsMine = false;
-            VARIABLE.SetOwnSprite(mine);
-            VARIABLE.minesinnear = 0;
+            VARIABLE.State = Mine.MineState.mine;
+            VARIABLE.Minesinnear = 0;
         }
     }
 
     public Mine GetMine(int pos)
     {
-        int anz = 1;
+        int anz = 0;
         for (int i = 0; i < spielfeld.GetLength(0); i++)
         {
             for (int j = 0; j < spielfeld.GetLength(1); j++)
@@ -160,18 +164,15 @@ public class GameController : MonoBehaviour
     {
 
         spielzüge = 0;
-        int c = spielfeld.GetLength(0)* spielfeld.GetLength(1);
+        int c = spielfeld.Length;
 
     
         resetmines();
         for (int i = 0; i < anzmines; i++)
         {
             Mine m;
-            if (((m = GetMine(rnd.Next(1, c + 1)))).IsMine)
-            {
-                i--;
-                continue;
-            }
+            if (((m = GetMine(rnd.Next(0, c)))).IsMine)        
+                i--;                        
             else
                 m.SetIsMine();
         }
@@ -190,40 +191,51 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-
+        camera = GameObject.Find("Main Camera");
         gameController = this.gameObject;
         //alle Minen in eine Liste packen dann in 2d array hauen. wurzel aus anz ziehen und länge festlegen.
-        List<GameObject> allmines = new List<GameObject>();
-        transform = gameController.transform;
-
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            allmines.Add(transform.GetChild(i).gameObject);
-        }
-        Debug.Log(allmines.Count + " allmines");
-        Debug.Log(transform.childCount + " childcount");
+        List<GameObject> allmines = new List<GameObject>();    
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    allmines.Add(transform.GetChild(i).gameObject);
+        //}
+        //Debug.Log(allmines.Count + " allmines");
+        //Debug.Log(transform.childCount + " childcount");
 
 
         if (length_x == 0 || length_y == 0)
             length_x = length_y = (int)Math.Sqrt(allmines.Count);
 
-        Debug.Log(length_x+ "     " +length_y);
-      
         spielfeld = new Mine[length_x, length_y];
         int c = 0;
-        for (int i = 0; i < spielfeld.GetLength(0); i++)
+        int i = 0;
+        int j = 0;
+
+
+
+        for (float y = 0; i< length_x ; y+=1.2f)
         {
-            for (int j = 0; j < spielfeld.GetLength(1); j++)
-            {
-                spielfeld[i, j] = allmines[c].GetComponent<Mine>();
-                ;
+            j = 0;
+
+            for (float x = 0; j< length_y; x += 1.2f)
+            {           
+               
+                spielfeld[i ,j]= Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity,gameController.transform).GetComponent<Mine>();
                 spielfeld[i, j].position = c;
-                spielfeld[i, j].SetOwnSprite(mine);
+               
                 c++;
+                j++;
             }
+            i++;          
         }
 
+        camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2));
+        camera.GetComponent<Camera>().orthographicSize = (length_x < length_y) ? length_y : length_x;
 
+        foreach (var VARIABLE in spielfeld)
+        {
+            Debug.Log(VARIABLE.position + "awake");
+        }
     }
 
 
