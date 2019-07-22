@@ -10,8 +10,9 @@ public class GameController : MonoBehaviour
     //public Sprite mine;
     //public Sprite openbomb;
     //public Sprite openredbomb;
-    public List<Sprite> advancedMines;
-    public List <Sprite> openMines;
+    public List<Sprite> advancedMines = new List<Sprite>();
+    public List <Sprite> openMines = new List<Sprite>();
+
     private Mine[,] spielfeld;
     private GameObject gameController;
     public bool Alreadyclicked { get; set; } = false;
@@ -24,9 +25,27 @@ public class GameController : MonoBehaviour
     public bool message = false;
     public GameObject myPrefab;
     private GameObject camera;
-    private bool firstClick();
+    private bool firstClick;
 
-    public GetAnd
+    public List<Sprite> GetAdvancedMines()
+    {    
+        return advancedMines;
+    }
+    public List<Sprite> GetOpenMines()
+    {
+        return openMines;
+    }
+
+    public bool GetAndNegateFirstClick()
+    {
+        if (firstClick)
+        {
+            firstClick = false;
+            return true;
+        }
+
+        return false;
+    }
 
     public int GetSpielZüge()
     {
@@ -197,7 +216,7 @@ public class GameController : MonoBehaviour
         camera = GameObject.Find("Main Camera");
         gameController = this.gameObject;
         //alle Minen in eine Liste packen dann in 2d array hauen. wurzel aus anz ziehen und länge festlegen.
-        List<GameObject> allmines = new List<GameObject>();    
+
         //for (int i = 0; i < transform.childCount; i++)
         //{
         //    allmines.Add(transform.GetChild(i).gameObject);
@@ -205,9 +224,10 @@ public class GameController : MonoBehaviour
         //Debug.Log(allmines.Count + " allmines");
         //Debug.Log(transform.childCount + " childcount");
 
+        Debug.Log(advancedMines.Count + "d");
+        Debug.Log(advancedMines[0].name);
 
-        if (length_x == 0 || length_y == 0)
-            length_x = length_y = (int)Math.Sqrt(allmines.Count);
+
 
         spielfeld = new Mine[length_x, length_y];
         int c = 0;
@@ -235,7 +255,7 @@ public class GameController : MonoBehaviour
         camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2));
         camera.GetComponent<Camera>().orthographicSize = (length_x < length_y) ? length_y : length_x;
 
-       
+    
     }
 
 
