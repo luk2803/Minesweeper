@@ -6,20 +6,12 @@ using Random = System.Random;
 public class GameController : MonoBehaviour
 {
     public bool gameOver = false;
-    private Sprite ownSprite;
-    public Sprite mineClicked;
-    public Sprite mineOpen;
-    public Sprite mine;
-    public Sprite openbomb;
-    public Sprite openredbomb;
-    public Sprite openmine_1;
-    public Sprite openmine_2;
-    public Sprite openmine_3;
-    public Sprite openmine_4;
-    public Sprite openmine_5;
-    public Sprite openmine_6;
-    public Sprite openmine_7;
-    public Sprite openmine_8;
+    //public Sprite mineClicked;
+    //public Sprite mine;
+    //public Sprite openbomb;
+    //public Sprite openredbomb;
+    public List<Sprite> advancedMines;
+    public List <Sprite> openMines;
     private Mine[,] spielfeld;
     private GameObject gameController;
     public bool Alreadyclicked { get; set; } = false;
@@ -27,11 +19,24 @@ public class GameController : MonoBehaviour
     static Random rnd = new Random();
     public int length_x = 0;
     public int length_y = 0;
-    public int spielzüge = 0;
+    private int Spielzüge = 0;
     public bool gewonnen = false;
     public bool message = false;
     public GameObject myPrefab;
     private GameObject camera;
+    private bool firstClick();
+
+    public GetAnd
+
+    public int GetSpielZüge()
+    {
+        return Spielzüge;
+    }
+
+    public void AddSpielZug()
+    {
+        Spielzüge++;
+    }
 
     public Mine[,] GetSpielFeld()
     {
@@ -163,7 +168,7 @@ public class GameController : MonoBehaviour
     public void GameStart()
     {
 
-        spielzüge = 0;
+        Spielzüge = 0;
         int c = spielfeld.Length;
 
     
@@ -184,8 +189,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameStart();
-
     }
 
 

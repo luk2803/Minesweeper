@@ -263,6 +263,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
+      propertyPath: openMines.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
       propertyPath: anzmines
       value: 1
       objectReference: {fileID: 0}
@@ -324,6 +334,71 @@ PrefabInstance:
       propertyPath: length_y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5aba6d8798c38334f9768875dd059575,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 65dad93d68e63df43a4084830e879e3e,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9169eedc06dbbd342871a3c6d265893e,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e38f75d85503364f8f540be4162cdf7,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b73d5e3239742d4abe101d53b3a5b04,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 95bfa89f26b6c104ab1d00f6f5362a2a,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: f74bd03fd76df024eae2fa866c9e176d,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08a6f7b36b63e1e4ca6282798f677eb7,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 20f6efab774c7a941bf19063d0e90430,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: e67a66f6bc3ffab4ab57d48d8dd5f5fd,
+        type: 3}
     - target: {fileID: 5255381231264550592, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
       propertyPath: m_RootOrder
