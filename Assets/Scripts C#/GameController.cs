@@ -135,12 +135,12 @@ public class GameController : MonoBehaviour
 
     public void resetmines()
     {
-        foreach (var VARIABLE in spielfeld)
+        foreach (var m in spielfeld)
         {
 
-            VARIABLE.IsMine = false;
-            VARIABLE.State = Mine.MineState.mine;
-            VARIABLE.Minesinnear = 0;
+            m.IsMine = false;
+            m.State = Mine.MineState.mine;
+            m.Minesinnear = 0;
         }
     }
 
@@ -232,10 +232,7 @@ public class GameController : MonoBehaviour
         camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2));
         camera.GetComponent<Camera>().orthographicSize = (length_x < length_y) ? length_y : length_x;
 
-        foreach (var VARIABLE in spielfeld)
-        {
-            Debug.Log(VARIABLE.position + "awake");
-        }
+       
     }
 
 

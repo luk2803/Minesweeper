@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 //using GameController;
 
 public class Mine : MonoBehaviour
@@ -339,17 +340,15 @@ public class Mine : MonoBehaviour
             else
             {
                 controllerScript.Alreadyclicked = false;
-            }
-
-
-
+            }    
         }
     }
 
     void OnMouseOver()
     {
-        ProveClick();
         Debug.Log("HALDLWUI)RFWAP");
+        ProveClick();
+     
     }
 
     void OnMouseExit()
@@ -388,10 +387,6 @@ public class Mine : MonoBehaviour
         openmine_8 = controllerScript.openmine_8;
         m = this;
 
-        Debug.Log(this.transform.localPosition.x +": x");
-        Debug.Log(this.transform.localPosition.y + ": y");
-
-
     }
 
     // Start is called before the first frame update
@@ -399,7 +394,7 @@ public class Mine : MonoBehaviour
     {
 
     }
-
+    
     // Update is called once per frame
     void Update()
     {
