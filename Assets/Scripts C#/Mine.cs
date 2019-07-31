@@ -33,9 +33,8 @@ public class Mine : MonoBehaviour
     private Sprite openredbomb;
     private Sprite mineClicked;
     private Sprite mine;
-    public bool IsSave { get; private set; } = false;
-    public List<Sprite> advancedMines = new List<Sprite>();
-    public List<Sprite> openMines = new List<Sprite>();
+    //public bool IsSave { get; private set; } = false;
+    public bool IsSave = false;
 
     private GameObject gameController;
     private GameController controllerScript;
@@ -59,80 +58,78 @@ public class Mine : MonoBehaviour
                     {
                         state = MineState.open;
 
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[0];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[0];
                         break;
                     }
                 case MineState.one:
                     {
                         state = MineState.one;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[1];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[1];
                         break;
                     }
                 case MineState.two:
                     {
                         state = MineState.two;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[2];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[2];
                         break;
                     }
                 case MineState.three:
                     {
                         state = MineState.three;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[3];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[3];
                         break;
                     }
                 case MineState.four:
                     {
                         state = MineState.four;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[4];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[4];
                         break;
                     }
                 case MineState.five:
                     {
                         state = MineState.five;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[5];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[5];
                         break;
                     }
                 case MineState.six:
                     {
                         state = MineState.six;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[6];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[6];
                         break;
                     }
                 case MineState.seven:
                     {
                         state = MineState.seven;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[7];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[7];
                         break;
                     }
                 case MineState.eight:
                     {
                         state = MineState.eight;
-                        this.GetComponent<SpriteRenderer>().sprite = openMines[8];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[8];
                         break;
                     }
                 case MineState.clicked:
                     {
                         state = MineState.clicked;
-                        this.GetComponent<SpriteRenderer>().sprite = advancedMines[0];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[0];
                         break;
                     }
                 case MineState.mine:
-                    {
-                        Debug.Log(advancedMines.Count);
-                       
-                        this.GetComponent<SpriteRenderer>().sprite = advancedMines[1];
+                    {                                          
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[1];
                         state = MineState.mine;
                         break;
                     }
                 case MineState.bomb:
                     {
-                        this.GetComponent<SpriteRenderer>().sprite = advancedMines[2];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[2];
                         state = MineState.bomb;
                         break;
                     }
                 case MineState.redbomb:
                     {
-                        this.GetComponent<SpriteRenderer>().sprite = advancedMines[3];
+                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[3];
                         state = MineState.redbomb;
                         break;
                     }
@@ -195,13 +192,15 @@ public class Mine : MonoBehaviour
         Fill(i, j + 1);
         Fill(i - 1, j);
         Fill(i, j - 1);
-
-
+        Fill(i + 1, j +1);
+        Fill(i + 1, j -1);
+        Fill(i - 1, j -1);
+        Fill(i -1, j +1);
     }
 
     public static bool Compare(Mine m, Mine mine)
     {
-        if (m.name == mine.name)
+        if (m.position == mine.position)
             return true;
         return false;
     }
@@ -216,8 +215,7 @@ public class Mine : MonoBehaviour
             controllerScript.AddSpielZug();
 
             State = (MineState)Minesinnear;
-            Debug.Log(controllerScript.GetSpielZüge());
-            Debug.Log(controllerScript.GetSpielFeld().Length - controllerScript.anzmines);
+          
 
             if (controllerScript.GetSpielZüge() ==
                 controllerScript.GetSpielFeld().Length - controllerScript.anzmines)
@@ -316,8 +314,9 @@ public class Mine : MonoBehaviour
     }
 
     void OnMouseOver()
-    {
-        Debug.Log("HALDLWUI)RFWAP");
+    {       
+        int x, y;
+        controllerScript.GetMinePosIJ(this, out x, out y);       
         ProveClick();
 
     }

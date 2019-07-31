@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     public bool message = false;
     public GameObject myPrefab;
     private GameObject camera;
-    private bool firstClick;
+    private bool firstClick = true;
 
     public List<Sprite> GetAdvancedMines()
     {    
@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < anzmines; i++)
         {
             Mine m;
-            if (((m = GetMine(rnd.Next(0, c)))).IsMine)        
+            if (((m = GetMine(rnd.Next(0, c)))).IsMine && m != m.IsSave)        
                 i--;                        
             else
                 m.SetIsMine();
@@ -252,7 +252,7 @@ public class GameController : MonoBehaviour
             i++;          
         }
 
-        camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2));
+        camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2),(float)-1);
         camera.GetComponent<Camera>().orthographicSize = (length_x < length_y) ? length_y : length_x;
 
     
