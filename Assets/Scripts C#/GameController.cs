@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -11,7 +10,7 @@ public class GameController : MonoBehaviour
     //public Sprite openbomb;
     //public Sprite openredbomb;
     public List<Sprite> advancedMines = new List<Sprite>();
-    public List <Sprite> openMines = new List<Sprite>();
+    public List<Sprite> openMines = new List<Sprite>();
 
     private Mine[,] spielfeld;
     private GameObject gameController;
@@ -22,13 +21,13 @@ public class GameController : MonoBehaviour
     public int length_y = 0;
     private int Spielzüge = 0;
     public bool gewonnen = false;
-    public bool message = false;
+    public bool spielendeMessage = false;
     public GameObject myPrefab;
     private GameObject camera;
     private bool firstClick = true;
 
     public List<Sprite> GetAdvancedMines()
-    {    
+    {
         return advancedMines;
     }
     public List<Sprite> GetOpenMines()
@@ -80,7 +79,7 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    public void openBombs()
+    public void openAllBombs()
     {
         foreach (var m in spielfeld)
         {
@@ -190,15 +189,19 @@ public class GameController : MonoBehaviour
         Spielzüge = 0;
         int c = spielfeld.Length;
 
-    
+
         resetmines();
         for (int i = 0; i < anzmines; i++)
         {
-            Mine m;
-            if (((m = GetMine(rnd.Next(0, c)))).IsMine && m != m.IsSave)        
-                i--;                        
+            Mine m = GetMine(rnd.Next(0, c));
+            if (!m.IsMine)
+                if (m != m.IsSave)
+                    m.SetIsMine();
+                else
+                    i--;
             else
-                m.SetIsMine();
+                i--;
+
         }
 
         SetNumbers();
@@ -224,8 +227,7 @@ public class GameController : MonoBehaviour
         //Debug.Log(allmines.Count + " allmines");
         //Debug.Log(transform.childCount + " childcount");
 
-        Debug.Log(advancedMines.Count + "d");
-        Debug.Log(advancedMines[0].name);
+     
 
 
 
@@ -236,26 +238,26 @@ public class GameController : MonoBehaviour
 
 
 
-        for (float y = 0; i< length_x ; y+=1.2f)
+        for (float y = 0; i < length_x; y += 1.2f)
         {
             j = 0;
 
-            for (float x = 0; j< length_y; x += 1.2f)
-            {           
-               
-                spielfeld[i ,j]= Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity,gameController.transform).GetComponent<Mine>();
+            for (float x = 0; j < length_y; x += 1.2f)
+            {
+
+                spielfeld[i, j] = Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity, gameController.transform).GetComponent<Mine>();
                 spielfeld[i, j].position = c;
-               
+
                 c++;
                 j++;
             }
-            i++;          
+            i++;
         }
 
-        camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2),(float)-1);
+        camera.transform.localPosition = new Vector3((float)(length_x * 1.2 / 2), (float)(length_y * 1.2 / 2), (float)-1);
         camera.GetComponent<Camera>().orthographicSize = (length_x < length_y) ? length_y : length_x;
 
-    
+
     }
 
 

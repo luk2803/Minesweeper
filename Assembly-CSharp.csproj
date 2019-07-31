@@ -56,6 +56,7 @@
      <Compile Include="Assets\Foggy Mountains Background\Demo\BackgroundHelper.cs" />
      <Compile Include="Assets\Scripts C#\GameController.cs" />
      <Compile Include="Assets\Scripts C#\Mine.cs" />
+     <Compile Include="Assets\Scripts C#\MineData.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/Lukas/Documents/MineSweeper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 //using GameController;
 
 public class Mine : MonoBehaviour
@@ -26,26 +24,22 @@ public class Mine : MonoBehaviour
 
     public int position;
     public bool IsMine { get; set; } = false;
-
-    private BoxCollider2D boxCollider;
     public int Minesinnear { get; set; } = 0;
-    private Sprite openbomb;
-    private Sprite openredbomb;
-    private Sprite mineClicked;
-    private Sprite mine;
     //public bool IsSave { get; private set; } = false;
     public bool IsSave = false;
+
+    public int MineData { get; private set; }
+    private BoxCollider2D boxCollider;
+
 
     private GameObject gameController;
     private GameController controllerScript;
     private bool messagenear = false;
 
-    //alle publics mit gettern/settern ersetzen 
-    //algorithmus erstellen
-    //bilder für zahlen erstellen
+    //interface/ class für MineDate!!
     //bombem filtern die nicht herausfindbar sind
     //start/endscreen
-    //selbsteintscheidung von größe des feldes und anz der bomben
+
     private MineState state;
     public MineState State
     {
@@ -116,7 +110,7 @@ public class Mine : MonoBehaviour
                         break;
                     }
                 case MineState.mine:
-                    {                                          
+                    {
                         this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[1];
                         state = MineState.mine;
                         break;
@@ -192,10 +186,10 @@ public class Mine : MonoBehaviour
         Fill(i, j + 1);
         Fill(i - 1, j);
         Fill(i, j - 1);
-        Fill(i + 1, j +1);
-        Fill(i + 1, j -1);
-        Fill(i - 1, j -1);
-        Fill(i -1, j +1);
+        Fill(i + 1, j + 1);
+        Fill(i + 1, j - 1);
+        Fill(i - 1, j - 1);
+        Fill(i - 1, j + 1);
     }
 
     public static bool Compare(Mine m, Mine mine)
@@ -209,13 +203,14 @@ public class Mine : MonoBehaviour
 
 
     public bool Click()
-    {
+    {     
+
         if (!IsMine)
         {
             controllerScript.AddSpielZug();
 
             State = (MineState)Minesinnear;
-          
+
 
             if (controllerScript.GetSpielZüge() ==
                 controllerScript.GetSpielFeld().Length - controllerScript.anzmines)
@@ -227,7 +222,7 @@ public class Mine : MonoBehaviour
         else
         {
             controllerScript.gameOver = true;
-            controllerScript.openBombs();
+            controllerScript.openAllBombs();
             State = MineState.redbomb;
         }
         //Debug.Log(controllerScript.Spielzüge + " Spielzüge");
@@ -257,53 +252,81 @@ public class Mine : MonoBehaviour
                 controllerScript.GetMinePosIJ(this, out i, out j);
                 #region isSave
                 if (controllerScript.GetAndNegateFirstClick())
+                {
+                    try
                     {
-                        try
-                        {
-                            controllerScript.GetSpielFeld()[i, j].IsSave = true;
-                        }
-                        catch
-                        {
-                        }
-
-                        try
-                        {
-                            controllerScript.GetSpielFeld()[i + 1, j].IsSave = true;
-                        }
-                        catch
-                        {
-                        }
-
-                        try
-                        {
-                            controllerScript.GetSpielFeld()[i - 1, j].IsSave = true;
-                        }
-                        catch
-                        {
-                        }
-
-                        try
-                        {
-                            controllerScript.GetSpielFeld()[i, j + 1].IsSave = true;
-                        }
-                        catch
-                        {
-                        }
-
-                        try
-                        {
-                            controllerScript.GetSpielFeld()[i, j - 1].IsSave = true;
-                        }
-                        catch
-                        {
-                        }
-
-
-                        controllerScript.GameStart();
+                        controllerScript.GetSpielFeld()[i, j].IsSave = true;
+                    }
+                    catch
+                    {
                     }
 
-                    #endregion
-                Fill(i, j);     
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i + 1, j].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i - 1, j].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i, j + 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i, j - 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i - 1, j - 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i + 1, j - 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i - 1, j + 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+                    try
+                    {
+                        controllerScript.GetSpielFeld()[i + 1, j + 1].IsSave = true;
+                    }
+                    catch
+                    {
+                    }
+
+                    controllerScript.GameStart();
+                }
+
+                #endregion
+                Fill(i, j);
                 controllerScript.Alreadyclicked = false;
             }
             else
@@ -314,11 +337,11 @@ public class Mine : MonoBehaviour
     }
 
     void OnMouseOver()
-    {       
-        int x, y;
-        controllerScript.GetMinePosIJ(this, out x, out y);       
-        ProveClick();
+    {
+        if (controllerScript.spielendeMessage)
+            return;
 
+        ProveClick();
     }
 
     void OnMouseExit()
@@ -337,10 +360,10 @@ public class Mine : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-      
+
         gameController = GameObject.Find("GameController");
-        controllerScript = gameController.GetComponent<GameController>();    
-        m = this;   
+        controllerScript = gameController.GetComponent<GameController>();
+        m = this;
         State = MineState.mine;
     }
 
@@ -353,13 +376,18 @@ public class Mine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controllerScript.gameOver && !controllerScript.message)
+        if (controllerScript.gameOver && !controllerScript.spielendeMessage)
         {
             if (controllerScript.gewonnen)
+            {
                 Debug.Log("Gewonnen!");
+                controllerScript.openAllBombs();
+            }
             else
                 Debug.Log("Verloren!");
-            controllerScript.message = true;
+
+
+            controllerScript.spielendeMessage = true;
 
             return;
         }

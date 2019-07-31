@@ -161,7 +161,7 @@ Camera:
     width: 10
     height: 10
   near clip plane: 0
-  far clip plane: 0.01
+  far clip plane: 10
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
       propertyPath: anzmines
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
