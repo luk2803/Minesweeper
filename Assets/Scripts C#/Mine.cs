@@ -1,181 +1,56 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts_C_;
+using UnityEngine;
 //using GameController;
+
+//TODO:
+//bombem filtern die nicht herausfindbar sind
+//start/endscreen
 
 public class Mine : MonoBehaviour
 {
-    public enum MineState
-    {
-        open = 0,
-        one,
-        two,
-        three,
-        four,
-        five,
-        six,
-        seven,
-        eight,
-        clicked,
-        mine,
-        bomb,
-        redbomb
 
-
-    }
-
-    public int position;
-    public bool IsMine { get; set; } = false;
-    public int Minesinnear { get; set; } = 0;
-    //public bool IsSave { get; private set; } = false;
-    public bool IsSave = false;
-
-    public int MineData { get; private set; }
-    private BoxCollider2D boxCollider;
-
-
-    private GameObject gameController;
+    public MineData MineData { get; private set; }
     private GameController controllerScript;
-    private bool messagenear = false;
-
-    //interface/ class für MineDate!!
-    //bombem filtern die nicht herausfindbar sind
-    //start/endscreen
-
-    private MineState state;
-    public MineState State
-    {
-        get { return state; }
-        set
-        {
-            switch (value)
-            {
-                case MineState.open:
-                    {
-                        state = MineState.open;
-
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[0];
-                        break;
-                    }
-                case MineState.one:
-                    {
-                        state = MineState.one;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[1];
-                        break;
-                    }
-                case MineState.two:
-                    {
-                        state = MineState.two;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[2];
-                        break;
-                    }
-                case MineState.three:
-                    {
-                        state = MineState.three;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[3];
-                        break;
-                    }
-                case MineState.four:
-                    {
-                        state = MineState.four;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[4];
-                        break;
-                    }
-                case MineState.five:
-                    {
-                        state = MineState.five;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[5];
-                        break;
-                    }
-                case MineState.six:
-                    {
-                        state = MineState.six;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[6];
-                        break;
-                    }
-                case MineState.seven:
-                    {
-                        state = MineState.seven;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[7];
-                        break;
-                    }
-                case MineState.eight:
-                    {
-                        state = MineState.eight;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.openMines[8];
-                        break;
-                    }
-                case MineState.clicked:
-                    {
-                        state = MineState.clicked;
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[0];
-                        break;
-                    }
-                case MineState.mine:
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[1];
-                        state = MineState.mine;
-                        break;
-                    }
-                case MineState.bomb:
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[2];
-                        state = MineState.bomb;
-                        break;
-                    }
-                case MineState.redbomb:
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = controllerScript.advancedMines[3];
-                        state = MineState.redbomb;
-                        break;
-                    }
-
-            }
-
-
-        }
-    }
-
-
-
+    
     private bool exit = false;
-
-    private Mine m = null;
-    private bool first = true;
+    private bool firstFillCall = true;
+    private Mine fillMineInstance;
 
     public void Fill(int i, int j)
     {
 
-        if (first)
+        if (firstFillCall)
         {
-            m.Click();
-            if (Minesinnear != 0)
+            fillMineInstance.Click();
+            if (MineData.MinesInNear != 0)
                 return;
 
-            first = false;
+            firstFillCall = false;
         }
         else
         {
             try
             {
-                m = controllerScript.GetSpielFeld()[i, j];
+                fillMineInstance = controllerScript.GetSpielFeld()[i, j];
             }
             catch
             {
                 return;
             }
 
-            if (m == null)
+            if (fillMineInstance == null)
             {
                 return;
             }
 
-            if (m.State != MineState.mine)
+            if (fillMineInstance.MineData.State != MineState.mine)
             {
 
                 return;
             }
 
-            m.Click();
-            if (m.Minesinnear != 0)
+            fillMineInstance.Click();
+            if (fillMineInstance.MineData.MinesInNear != 0)
             {
 
                 return;
@@ -194,22 +69,20 @@ public class Mine : MonoBehaviour
 
     public static bool Compare(Mine m, Mine mine)
     {
-        if (m.position == mine.position)
+        if (m.MineData.Position == mine.MineData.Position)
             return true;
         return false;
     }
-
-
-
+    
 
     public bool Click()
     {     
 
-        if (!IsMine)
+        if (!MineData.IsMine)
         {
             controllerScript.AddSpielZug();
 
-            State = (MineState)Minesinnear;
+            MineData.State = (MineState)MineData.MinesInNear;
 
 
             if (controllerScript.GetSpielZüge() ==
@@ -223,7 +96,7 @@ public class Mine : MonoBehaviour
         {
             controllerScript.gameOver = true;
             controllerScript.openAllBombs();
-            State = MineState.redbomb;
+            MineData.State = MineState.redbomb;
         }
         //Debug.Log(controllerScript.Spielzüge + " Spielzüge");
         return true;
@@ -237,25 +110,25 @@ public class Mine : MonoBehaviour
 
             if (controllerScript.Alreadyclicked)
                 return;
-            if (State == MineState.mine)
+            if (MineData.State == MineState.mine)
             {
-                State = MineState.clicked;
+                MineData.State = MineState.clicked;
 
                 controllerScript.Alreadyclicked = true;
             }
         }
         else
         {
-            if (State == MineState.clicked)
+            if (MineData.State == MineState.clicked)
             {
                 int i, j;
                 controllerScript.GetMinePosIJ(this, out i, out j);
-                #region isSave
+                #region isNotAllowedToBeBomb
                 if (controllerScript.GetAndNegateFirstClick())
                 {
                     try
                     {
-                        controllerScript.GetSpielFeld()[i, j].IsSave = true;
+                        controllerScript.GetSpielFeld()[i, j].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -263,7 +136,7 @@ public class Mine : MonoBehaviour
 
                     try
                     {
-                        controllerScript.GetSpielFeld()[i + 1, j].IsSave = true;
+                        controllerScript.GetSpielFeld()[i + 1, j].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -271,7 +144,7 @@ public class Mine : MonoBehaviour
 
                     try
                     {
-                        controllerScript.GetSpielFeld()[i - 1, j].IsSave = true;
+                        controllerScript.GetSpielFeld()[i - 1, j].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -279,7 +152,7 @@ public class Mine : MonoBehaviour
 
                     try
                     {
-                        controllerScript.GetSpielFeld()[i, j + 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i, j + 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -287,7 +160,7 @@ public class Mine : MonoBehaviour
 
                     try
                     {
-                        controllerScript.GetSpielFeld()[i, j - 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i, j - 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -295,28 +168,28 @@ public class Mine : MonoBehaviour
 
                     try
                     {
-                        controllerScript.GetSpielFeld()[i - 1, j - 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i - 1, j - 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
                     }
                     try
                     {
-                        controllerScript.GetSpielFeld()[i + 1, j - 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i + 1, j - 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
                     }
                     try
                     {
-                        controllerScript.GetSpielFeld()[i - 1, j + 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i - 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
                     }
                     try
                     {
-                        controllerScript.GetSpielFeld()[i + 1, j + 1].IsSave = true;
+                        controllerScript.GetSpielFeld()[i + 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
                     }
                     catch
                     {
@@ -347,27 +220,23 @@ public class Mine : MonoBehaviour
     void OnMouseExit()
     {
         exit = true;
-        messagenear = false;
-
     }
 
     public void SetIsMine()
     {
-        IsMine = true;
+        MineData.IsMine = true;
     }
 
 
     private void Awake()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-
-        gameController = GameObject.Find("GameController");
-        controllerScript = gameController.GetComponent<GameController>();
-        m = this;
-        State = MineState.mine;
+        controllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+        MineData= new MineData(this, controllerScript);
+        MineData.State = MineState.mine;
+        fillMineInstance = this;
     }
 
-    // Start is called before the first frame update
+    // Start is called before the firstFillCall frame update
     void Start()
     {
 
@@ -397,9 +266,9 @@ public class Mine : MonoBehaviour
             if (!Input.GetMouseButton(0))
             {
                 exit = false;
-                if (State == MineState.clicked)
+                if (MineData.State == MineState.clicked)
                 {
-                    State = MineState.mine;
+                    MineData.State = MineState.mine;
 
                 }
             }
