@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8826922654565343365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7030430323548776264}
+  - component: {fileID: 7133895448350132209}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7030430323548776264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826922654565343365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7288127, y: -0.46701744, z: 0.09044753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7133895448350132209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826922654565343365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225e1d1386ef1b04c832e021885f1afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver: 0
+  mineClicked: {fileID: 21300000, guid: e67a66f6bc3ffab4ab57d48d8dd5f5fd, type: 3}
+  mineOpen: {fileID: 21300000, guid: 5aba6d8798c38334f9768875dd059575, type: 3}
+  mine: {fileID: 21300000, guid: 20f6efab774c7a941bf19063d0e90430, type: 3}
+  openbomb: {fileID: 0}
+  openredbomb: {fileID: 0}
+  openmine_1: {fileID: 0}
+  openmine_2: {fileID: 0}
+  openmine_3: {fileID: 0}
+  openmine_4: {fileID: 0}
+  openmine_5: {fileID: 0}
+  anzmines: 0
+  length_x: 0
+  length_y: 0
+  "spielz\xFCge": 0
+  gewonnen: 0
+  message: 0
+  myPrefab: {fileID: 0}
