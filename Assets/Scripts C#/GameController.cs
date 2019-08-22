@@ -211,14 +211,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-
-    void Awake()
-    {
         cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         gameController = this.gameObject;
-        
+
         spielfeld = new Mine[length_x, length_y];
         int zählerInsgesamt = 0;
         int zählerLänge = 0;
@@ -240,8 +235,14 @@ public class GameController : MonoBehaviour
             zählerLänge++;
         }
 
-        cameraScript.createCameraSettings(length_x,length_y);
+        
+        cameraScript.createCameraSettings(length_x, length_y);
 
+    }
+
+
+    void Awake()
+    {
     }
 
 

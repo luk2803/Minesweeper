@@ -3,6 +3,7 @@ using UnityEngine;
 //using GameController;
 
 //TODO:
+//refactor Fill/ alle try catch Blöcke
 //bombem filtern die nicht herausfindbar sind
 //start/endscreen
 
