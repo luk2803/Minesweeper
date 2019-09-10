@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts_C_;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class GameController : MonoBehaviour
@@ -209,17 +211,17 @@ public class GameController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Load() //wird in CameraScript aufgerufen
     {
-        cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+        this.cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+        
         gameController = this.gameObject;
 
         spielfeld = new Mine[length_x, length_y];
-        int zählerInsgesamt = 0;
+        int zählerInsgesamt = 0; 
         int zählerLänge = 0;
         int zählerBreite = 0;
         float längeBreiteDerMine = 1.2f;
-
 
         for (float x = 0; zählerLänge < length_x; x += längeBreiteDerMine)
         {
@@ -234,15 +236,14 @@ public class GameController : MonoBehaviour
             }
             zählerLänge++;
         }
-
-        
         cameraScript.createCameraSettings(length_x, length_y);
 
     }
 
 
-    void Awake()
+    void Start()
     {
+
     }
 
 

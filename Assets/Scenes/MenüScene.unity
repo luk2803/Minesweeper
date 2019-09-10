@@ -997,6 +997,172 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057831848}
   m_CullTransparentMesh: 0
+--- !u!1001 &1084767864
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8826922654565343365, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_Name
+      value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.7288127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.46701744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.09044753
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030430323548776264, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: anzmines
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: length_x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: length_y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: db95c7e1d2db1f94a9240861c832d15e,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: a23858745e1c501429ea7ac7f487e624,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 15d18787431559448957c7e1a52659b9,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e8b4d170dfba244797faab55164443f,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: da777c7045d411148b10ad43c5135589,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ac9eb460035b7943b3b7bb830bfe8c5,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09a50eabe89336c47b878f1cd4e321ce,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 99bb40235c6a8c64f9934cd628fac953,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: cebb65b096b495d40bc99cfc2beff927,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: a60f400667b855e4d81f2802255870c0,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: myPrefab
+      value: 
+      objectReference: {fileID: 5178432617166699475, guid: d089db794f5c01f43b4fd494b60d0967,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7a747160b30b80469be56cbb88e1a74, type: 3}
+--- !u!1 &1084767865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8826922654565343365, guid: c7a747160b30b80469be56cbb88e1a74,
+    type: 3}
+  m_PrefabInstance: {fileID: 1084767864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1093351050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,6 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f328af31c86944bbd69eef3d98f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 1084767865}
 --- !u!1 &2000036393
 GameObject:
   m_ObjectHideFlags: 0

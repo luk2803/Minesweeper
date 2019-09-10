@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject.Find("GameController").GetComponent<GameController>().Load();
     }
 
     public void createCameraSettings(int spielfeld_length_x, int spielfeld_length_y)

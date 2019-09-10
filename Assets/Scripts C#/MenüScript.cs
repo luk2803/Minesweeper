@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Object = System.Object;
 
 public class MenüScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameObject gameController;
     private GameController controllerScript;
     private List<InputField> spielFeldData = new List<InputField>();
     private int newSceneIndex;
@@ -19,30 +21,40 @@ public class MenüScript : MonoBehaviour
         spielFeldData.Add(GameObject.Find("Input_X").GetComponent<InputField>());
         spielFeldData.Add(GameObject.Find("Input_Y").GetComponent<InputField>());
         spielFeldData.Add(GameObject.Find("Input_AnzMines").GetComponent<InputField>());
+
+        controllerScript = gameController.GetComponent<GameController>();
     }
+
     public void PlayGame()
     {
+       
         if (CheckAllCorrect())
         {
             newSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            SceneManager.LoadScene(newSceneIndex);
-            spielfeld = SceneManager.GetSceneByBuildIndex(newSceneIndex);
-            Debug.Log(spielfeld.name);
+           
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(newSceneIndex, LoadSceneMode.Additive);
+            //Don't let the Scene activate until you allow it to
+            asyncOperation.allowSceneActivation = false;
 
-            foreach (GameObject gameObject in spielfeld.GetRootGameObjects())
-            {
-                Debug.Log(gameObject.name +": dawd");
-                if (gameObject.name == "GameController")
-                {
-                    controllerScript = gameObject.GetComponent<GameController>();
-                }
-            }
-
+            Scene game = SceneManager.GetSceneByBuildIndex(newSceneIndex);
+           
             controllerScript.length_x = int.Parse(spielFeldData[0].text);
             controllerScript.length_y = int.Parse(spielFeldData[1].text);
             controllerScript.anzmines = int.Parse(spielFeldData[2].text);
 
-           
+            while (asyncOperation.progress < 0.9f)
+            {
+                Debug.Log("Loading scene " + " [][] Progress: " + asyncOperation.progress);
+            }
+
+
+            asyncOperation.allowSceneActivation = true;
+
+            SceneManager.MoveGameObjectToScene(gameController, game);
+
+            SceneManager.SetActiveScene(game);
+
+
         }
         else
             ResetInputFields();
