@@ -31,30 +31,22 @@ public class MenüScript : MonoBehaviour
         if (CheckAllCorrect())
         {
             newSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-           
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(newSceneIndex, LoadSceneMode.Additive);
-            //Don't let the Scene activate until you allow it to
-            asyncOperation.allowSceneActivation = false;
 
+            List<GameObject> test;
+            
+            SceneManager.LoadScene(newSceneIndex);
+           
             Scene game = SceneManager.GetSceneByBuildIndex(newSceneIndex);
            
             controllerScript.length_x = int.Parse(spielFeldData[0].text);
             controllerScript.length_y = int.Parse(spielFeldData[1].text);
             controllerScript.anzmines = int.Parse(spielFeldData[2].text);
 
-            while (asyncOperation.progress < 0.9f)
-            {
-                Debug.Log("Loading scene " + " [][] Progress: " + asyncOperation.progress);
-            }
-
-
-            asyncOperation.allowSceneActivation = true;
-
-            SceneManager.MoveGameObjectToScene(gameController, game);
-
-            SceneManager.SetActiveScene(game);
-
-
+           
+    
+            // SceneManager.MoveGameObjectToScene(gameController, game);
+            DontDestroyOnLoad(gameController);
+            SceneManager.UnloadScene(newSceneIndex-1);
         }
         else
             ResetInputFields();
