@@ -7,6 +7,13 @@ using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
+    //TODO
+    // Messagebox für Errors  / ErrorMessages im Menü
+    // Flaggen
+    // Zoom in richtung
+    // Zähler von Bomben
+    // Design überarbeiten
+    
     public bool gameOver = false;
     //public Sprite mineClicked;
     //public Sprite mine;
@@ -112,51 +119,56 @@ public class GameController : MonoBehaviour
                     continue;
                 }
 
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j]);
-                }
-                catch
-                { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j - 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j - 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j - 1]);
-                }
-                catch { }
+                SetMinesInNear(i, j);
 
 
             }
         }
+    }
+
+    private void SetMinesInNear(int i, int j)
+    {
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j]);
+        }
+        catch
+        { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j - 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j - 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j - 1]);
+        }
+        catch { }
     }
 
     public void resetMines()

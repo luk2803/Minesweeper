@@ -39,6 +39,7 @@ public class MenüScript : MonoBehaviour
             controllerScript.length_y = int.Parse(spielFeldData[1].text);
             controllerScript.anzmines = int.Parse(spielFeldData[2].text);
 
+            
             // SceneManager.MoveGameObjectToScene(gameController, game);
             DontDestroyOnLoad(gameController);
             SceneManager.UnloadScene(newSceneIndex-1);
