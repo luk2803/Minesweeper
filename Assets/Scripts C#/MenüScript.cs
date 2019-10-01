@@ -31,9 +31,6 @@ public class MenüScript : MonoBehaviour
         if (CheckAllCorrect())
         {
             newSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-            List<GameObject> test;
-            
             SceneManager.LoadScene(newSceneIndex);
            
             Scene game = SceneManager.GetSceneByBuildIndex(newSceneIndex);
