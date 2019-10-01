@@ -31,16 +31,14 @@ public class MenüScript : MonoBehaviour
         if (CheckAllCorrect())
         {
             newSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            
             SceneManager.LoadScene(newSceneIndex);
-           
             Scene game = SceneManager.GetSceneByBuildIndex(newSceneIndex);
            
             controllerScript.length_x = int.Parse(spielFeldData[0].text);
             controllerScript.length_y = int.Parse(spielFeldData[1].text);
             controllerScript.anzmines = int.Parse(spielFeldData[2].text);
 
-           
-    
             // SceneManager.MoveGameObjectToScene(gameController, game);
             DontDestroyOnLoad(gameController);
             SceneManager.UnloadScene(newSceneIndex-1);
