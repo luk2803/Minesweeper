@@ -1,10 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts_C_;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
+    //TODO
+    // Messagebox für Errors  / ErrorMessages im Menü
+    // Flaggen
+    // Zoom in richtung
+    // Zähler von Bomben
+    // Design überarbeiten
+    
     public bool gameOver = false;
     //public Sprite mineClicked;
     //public Sprite mine;
@@ -110,51 +119,56 @@ public class GameController : MonoBehaviour
                     continue;
                 }
 
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j]);
-                }
-                catch
-                { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j - 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j - 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j + 1]);
-                }
-                catch { }
-                try
-                {
-                    spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j - 1]);
-                }
-                catch { }
+                SetMinesInNear(i, j);
 
 
             }
         }
+    }
+
+    private void SetMinesInNear(int i, int j)
+    {
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j]);
+        }
+        catch
+        { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j - 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j - 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j + 1]);
+        }
+        catch { }
+        try
+        {
+            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j - 1]);
+        }
+        catch { }
     }
 
     public void resetMines()
@@ -209,22 +223,17 @@ public class GameController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Load() //wird in CameraScript aufgerufen
     {
-    }
-
-
-    void Awake()
-    {
-        cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-        gameController = this.gameObject;
+        this.cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         
+        gameController = this.gameObject;
+
         spielfeld = new Mine[length_x, length_y];
-        int zählerInsgesamt = 0;
+        int zählerInsgesamt = 0; 
         int zählerLänge = 0;
         int zählerBreite = 0;
         float längeBreiteDerMine = 1.2f;
-
 
         for (float x = 0; zählerLänge < length_x; x += längeBreiteDerMine)
         {
@@ -239,8 +248,13 @@ public class GameController : MonoBehaviour
             }
             zählerLänge++;
         }
+        cameraScript.createCameraSettings(length_x, length_y);
 
-        cameraScript.createCameraSettings(length_x,length_y);
+    }
+
+
+    void Start()
+    {
 
     }
 
