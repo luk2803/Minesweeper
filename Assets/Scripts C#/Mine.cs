@@ -1,5 +1,7 @@
-﻿using Assets.Scripts_C_;
+﻿using System;
+using Assets.Scripts_C_;
 using UnityEngine;
+
 //using GameController;
 
 //TODO:
@@ -9,20 +11,55 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-
-    public MineData MineData { get; private set; }
+    private MineData MineData { get; set; }
     private GameController controllerScript;
-    
+
     private bool exit = false;
     private bool firstFillCall = true;
     private Mine fillMineInstance;
 
+    public bool GetIsMine()
+    {
+        return MineData.IsMine;
+    }
+
+    public void AddOneToMinesInNear(int bombcount)
+    {
+        MineData.MinesInNear += bombcount;
+    }
+
+    public MineState GetState()
+    {
+        return MineData.State;
+    }
+
+    public void SetState(MineState state)
+    {
+        MineData.State = state;
+    }
+
+    public bool GetIsNotAllowedToBeBomb()
+    {
+        return MineData.IsNotAllowedToBeBomb;
+    }
+
+    public void Reset()
+    {
+        MineData.IsMine = false;
+        MineData.State = MineState.mine;
+        MineData.MinesInNear = 0;
+    }
+
+    public void SetPosition(int position)
+    {
+        MineData.Position = position;
+    }
+
     public void Fill(int i, int j)
     {
-
         if (firstFillCall)
         {
-            fillMineInstance.Click();
+            fillMineInstance.Open();
             if (MineData.MinesInNear != 0)
                 return;
 
@@ -46,14 +83,15 @@ public class Mine : MonoBehaviour
 
             if (fillMineInstance.MineData.State != MineState.mine)
             {
-
                 return;
             }
 
-            fillMineInstance.Click();
+            if (fillMineInstance.MineData.State == MineState.mineFlag)
+                return;
+
+            fillMineInstance.Open();
             if (fillMineInstance.MineData.MinesInNear != 0)
             {
-
                 return;
             }
         }
@@ -74,16 +112,15 @@ public class Mine : MonoBehaviour
             return true;
         return false;
     }
-    
 
-    public bool Click()
-    {     
 
+    public void Open()
+    {
         if (!MineData.IsMine)
         {
             controllerScript.AddSpielZug();
 
-            MineData.State = (MineState)MineData.MinesInNear;
+            MineData.State = (MineState) MineData.MinesInNear;
 
 
             if (controllerScript.GetSpielZüge() ==
@@ -99,22 +136,30 @@ public class Mine : MonoBehaviour
             controllerScript.openAllBombs();
             MineData.State = MineState.redbomb;
         }
+
         //Debug.Log(controllerScript.Spielzüge + " Spielzüge");
-        return true;
+        return;
     }
 
     public void ProveClick()
     {
-
         if (Input.GetMouseButton(0))
         {
-
             if (controllerScript.Alreadyclicked)
                 return;
+
             if (MineData.State == MineState.mine)
             {
-                MineData.State = MineState.clicked;
-
+                if (controllerScript.isFlagMode)
+                    MineData.State = MineState.flagclicked;
+                else
+                    MineData.State = MineState.clicked;
+                
+                controllerScript.Alreadyclicked = true;
+            }
+            else if (MineData.State == MineState.mineFlag && controllerScript.isFlagMode)
+            {
+             RemoveFlag();
                 controllerScript.Alreadyclicked = true;
             }
         }
@@ -122,11 +167,21 @@ public class Mine : MonoBehaviour
         {
             if (MineData.State == MineState.clicked)
             {
+                if (controllerScript.isFlagMode)
+                {
+                    SetFlag();
+                    return;
+                }
+
                 int i, j;
                 controllerScript.GetMinePosIJ(this, out i, out j);
 
                 IsNotAllowedToBeBomb(i, j);
                 Fill(i, j);
+                controllerScript.Alreadyclicked = false;
+            }else if (MineData.State == MineState.flagclicked)
+            {
+                SetFlag();
                 controllerScript.Alreadyclicked = false;
             }
             else
@@ -134,6 +189,18 @@ public class Mine : MonoBehaviour
                 controllerScript.Alreadyclicked = false;
             }
         }
+    }
+
+
+    private void SetFlag()
+    {
+        MineData.State = MineState.mineFlag;
+    }
+
+    private void RemoveFlag()
+    {
+        MineData.State = MineState.mine;
+            Debug.Log("remove");
     }
 
     private void IsNotAllowedToBeBomb(int i, int j)
@@ -187,6 +254,7 @@ public class Mine : MonoBehaviour
             catch
             {
             }
+
             try
             {
                 controllerScript.GetSpielFeld()[i + 1, j - 1].MineData.IsNotAllowedToBeBomb = true;
@@ -194,6 +262,7 @@ public class Mine : MonoBehaviour
             catch
             {
             }
+
             try
             {
                 controllerScript.GetSpielFeld()[i - 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
@@ -201,6 +270,7 @@ public class Mine : MonoBehaviour
             catch
             {
             }
+
             try
             {
                 controllerScript.GetSpielFeld()[i + 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
@@ -235,7 +305,7 @@ public class Mine : MonoBehaviour
     private void Awake()
     {
         controllerScript = GameObject.Find("GameController").GetComponent<GameController>();
-        MineData= new MineData(this, controllerScript);
+        MineData = new MineData(this, controllerScript);
         MineData.State = MineState.mine;
         fillMineInstance = this;
     }
@@ -243,7 +313,6 @@ public class Mine : MonoBehaviour
     // Start is called before the firstFillCall frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -273,7 +342,6 @@ public class Mine : MonoBehaviour
                 if (MineData.State == MineState.clicked)
                 {
                     MineData.State = MineState.mine;
-
                 }
             }
             else
@@ -281,8 +349,5 @@ public class Mine : MonoBehaviour
                 return;
             }
         }
-
-
-
     }
 }

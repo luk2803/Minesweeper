@@ -1067,12 +1067,12 @@ PrefabInstance:
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
       propertyPath: openMines.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
       propertyPath: advancedMines.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
         type: 3}
@@ -1155,6 +1155,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5178432617166699475, guid: d089db794f5c01f43b4fd494b60d0967,
         type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: advancedMines.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: ee8d1fa82eb5cdb4c9a49b2bafdafea1,
+        type: 3}
+    - target: {fileID: 7133895448350132209, guid: c7a747160b30b80469be56cbb88e1a74,
+        type: 3}
+      propertyPath: openMines.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a747160b30b80469be56cbb88e1a74, type: 3}
 --- !u!1 &1084767865 stripped

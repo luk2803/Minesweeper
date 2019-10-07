@@ -6,7 +6,6 @@
         bool IsMine { get; set; }
         int MinesInNear { get; set; }
         bool IsNotAllowedToBeBomb { get; set; }
-
         MineState State { get; set; }
        
     }

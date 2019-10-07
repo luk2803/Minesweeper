@@ -14,6 +14,9 @@
         clicked,
         mine,
         bomb,
-        redbomb
+        redbomb,
+        mineFlag,
+        flagclicked
+        
     }
 }

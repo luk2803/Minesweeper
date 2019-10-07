@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     public GameObject myPrefab;
     private CameraScript cameraScript;
     private bool firstClick = true;
+    public bool isFlagMode = false;
 
     public List<Sprite> GetAdvancedMines()
     {
@@ -93,9 +94,9 @@ public class GameController : MonoBehaviour
     {
         foreach (var m in spielfeld)
         {
-            if (m.MineData.IsMine)
+            if (m.GetIsMine())
             {
-                m.MineData.State = MineState.bomb;
+                m.SetState(MineState.bomb);
 
             }
 
@@ -104,7 +105,7 @@ public class GameController : MonoBehaviour
 
     public int isbomb(Mine m)
     {
-        if (m.MineData.IsMine)
+        if (m.GetIsMine())
             return 1;
         return 0;
     }
@@ -114,7 +115,7 @@ public class GameController : MonoBehaviour
         {
             for (int j = 0; j < spielfeld.GetLength(1); j++)
             {
-                if (spielfeld[i, j].MineData.IsMine)
+                if (spielfeld[i, j].GetIsMine())
                 {
                     continue;
                 }
@@ -130,54 +131,52 @@ public class GameController : MonoBehaviour
     {
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j]));
         }
         catch
         { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j + 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j + 1]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j - 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j - 1]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i + 1, j - 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j - 1]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i - 1, j + 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j + 1]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j + 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i, j + 1]));
         }
         catch { }
         try
         {
-            spielfeld[i, j].MineData.MinesInNear += isbomb(spielfeld[i, j - 1]);
+            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i, j - 1]));
         }
         catch { }
     }
 
-    public void resetMines()
+    public void ResetMines()
     {
         foreach (var m in spielfeld)
         {
-            m.MineData.IsMine = false;
-            m.MineData.State = MineState.mine;
-            m.MineData.MinesInNear = 0;
+            m.Reset();
         }
     }
 
@@ -204,12 +203,12 @@ public class GameController : MonoBehaviour
         int c = spielfeld.Length;
 
 
-        resetMines();
+        ResetMines();
         for (int i = 0; i < anzmines; i++)
         {
             Mine m = GetMine(rnd.Next(0, c));
-            if (!m.MineData.IsMine)
-                if (m != m.MineData.IsNotAllowedToBeBomb)
+            if (!m.GetIsMine())
+                if (m != m.GetIsNotAllowedToBeBomb())
                     m.SetIsMine();
                 else
                     i--;
@@ -241,7 +240,7 @@ public class GameController : MonoBehaviour
             for (float y = 0; zählerBreite < length_y; y += längeBreiteDerMine)
             {
                 spielfeld[zählerLänge, zählerBreite] = Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity, gameController.transform).GetComponent<Mine>();
-                spielfeld[zählerLänge, zählerBreite].MineData.Position = zählerInsgesamt;
+                spielfeld[zählerLänge, zählerBreite].SetPosition(zählerInsgesamt);
 
                 zählerInsgesamt++;
                 zählerBreite++;

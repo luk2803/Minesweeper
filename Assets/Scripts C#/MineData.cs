@@ -50,14 +50,6 @@ namespace Assets.Scripts_C_
             set => _isNotAllowedToBeBomb = value; 
         }
 
-        private bool _isFlagge;
-
-        public bool IsFlagge
-        {
-            get => _isFlagge;
-            set => _isFlagge = IsFlagge;
-        }
-
         private MineState _state;
 
         public MineState State
@@ -145,7 +137,17 @@ namespace Assets.Scripts_C_
                             spriteRenderer.sprite = controllerInstance.advancedMines[3];
                             break;
                         }
-
+                    case MineState.mineFlag:
+                    {
+                        _state = MineState.mineFlag;
+                        spriteRenderer.sprite = controllerInstance.advancedMines[4];
+                        break;
+                    }
+                    case MineState.flagclicked:
+                    {
+                        _state = MineState.flagclicked;
+                        break;
+                    }
                 }
 
 

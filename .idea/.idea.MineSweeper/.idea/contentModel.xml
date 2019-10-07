@@ -19,7 +19,6 @@
           <e p="Mine.cs" t="Include" />
           <e p="MineData.cs" t="Include" />
           <e p="MineState.cs" t="Include" />
-          <e p="PlayButtonScript.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
