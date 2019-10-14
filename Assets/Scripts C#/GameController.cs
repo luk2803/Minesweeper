@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts_C_;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = System.Random;
 
 public class GameController : MonoBehaviour
@@ -13,40 +14,27 @@ public class GameController : MonoBehaviour
     // Zoom in richtung
     // Zähler von Bomben
     // Design überarbeiten
-
-    public bool gameOver = false;
-
-    //public Sprite mineClicked;
-    //public Sprite mine;
-    //public Sprite openbomb;
-    //public Sprite openredbomb;
+    
     public List<Sprite> advancedMines = new List<Sprite>();
     public List<Sprite> openMines = new List<Sprite>();
-
-    private Mine[,] spielfeld;
-    private GameObject gameController;
-    public bool Alreadyclicked { get; set; } = false;
-    public int anzmines;
     static Random rnd = new Random();
+
+    public bool gameOver;
+    public int anzmines;
     public int length_x = 0;
     public int length_y = 0;
-    private int Spielzüge = 0;
-    public bool gewonnen = false;
-    public bool spielendeMessage = false;
+    public bool gewonnen;
+    public bool gameOverMessage;
+    private bool firstClick;
+    public bool isFlagMode;
+    public bool Alreadyclicked { get; set; } 
+    private int Spielzüge;
+    
+    private Mine[,] spielfeld;
+    private GameObject gameController;
     public GameObject myPrefab;
     private CameraScript cameraScript;
-    private bool firstClick = true;
-    public bool isFlagMode = false;
-
-    public List<Sprite> GetAdvancedMines()
-    {
-        return advancedMines;
-    }
-
-    public List<Sprite> GetOpenMines()
-    {
-        return openMines;
-    }
+  
 
     public bool GetAndNegateFirstClick()
     {
@@ -55,25 +43,15 @@ public class GameController : MonoBehaviour
             firstClick = false;
             return true;
         }
-
         return false;
     }
-
-    public int GetSpielZüge()
-    {
-        return Spielzüge;
-    }
-
-    public void AddSpielZug()
-    {
-        Spielzüge++;
-    }
-
-    public Mine[,] GetSpielFeld()
-    {
-        return spielfeld;
-    }
-
+    public List<Sprite> GetAdvancedMines() => advancedMines;
+    public List<Sprite> GetOpenMines() => openMines;
+    public bool GetFirstClick() => firstClick;
+    public Mine[,] GetSpielFeld() => spielfeld;
+    public int GetSpielZüge() => Spielzüge;
+    public void AddSpielZug() => Spielzüge++;
+    
     public bool GetMinePosIJ(Mine m, out int i, out int j)
     {
         j = 0;
@@ -155,7 +133,7 @@ public class GameController : MonoBehaviour
     {
         foreach (var m in spielfeld)
         {
-            m.Reset();
+            m.ResetMine();
         }
     }
 
@@ -174,14 +152,23 @@ public class GameController : MonoBehaviour
 
         return null;
     }
-
-    public void GameStart()
+    
+    public void ResetGame()
     {
+       
+        gameOver = false;
+        gewonnen = false;
+        gameOverMessage = false;
+        firstClick = true;
+        isFlagMode = false;
+        Alreadyclicked = false;
         Spielzüge = 0;
+    }
+
+    public void InsertMines()
+    {
         int c = spielfeld.Length;
-
-
-        ResetMines();
+        
         for (int i = 0; i < anzmines; i++)
         {
             Mine m = GetMine(rnd.Next(0, c));
@@ -196,10 +183,9 @@ public class GameController : MonoBehaviour
 
         SetNumbers();
     }
-
-    // Start is called before the first frame update
     public void Load() //wird in CameraScript aufgerufen
     {
+        ResetGame();
         this.cameraScript = GameObject.Find("MainCamera").GetComponent<CameraScript>();
 
         gameController = this.gameObject;
@@ -228,16 +214,5 @@ public class GameController : MonoBehaviour
         }
 
         cameraScript.createCameraSettings(length_x, length_y);
-    }
-
-
-    void Start()
-    {
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

@@ -17,6 +17,5 @@
         redbomb,
         mineFlag,
         flagclicked
-        
     }
 }

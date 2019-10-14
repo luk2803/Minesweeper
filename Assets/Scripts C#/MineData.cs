@@ -13,15 +13,12 @@ namespace Assets.Scripts_C_
     {
         public MineData(Mine mineInstance, GameController controllerInstance )
         {
-            this.mineInstance = mineInstance;
             this.controllerInstance = controllerInstance;
             this.spriteRenderer = mineInstance.GetComponent<SpriteRenderer>();
         }
 
         private GameController controllerInstance;
         private SpriteRenderer spriteRenderer;
-        private Mine mineInstance;
-
         private int _position;
         public int Position
         {

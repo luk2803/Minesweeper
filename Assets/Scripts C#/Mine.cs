@@ -18,41 +18,21 @@ public class Mine : MonoBehaviour
     private bool firstFillCall = true;
     private Mine fillMineInstance;
 
-    public bool GetIsMine()
-    {
-        return MineData.IsMine;
-    }
-
-    public void AddOneToMinesInNear(int bombcount)
-    {
-        MineData.MinesInNear += bombcount;
-    }
-
-    public MineState GetState()
-    {
-        return MineData.State;
-    }
-
-    public void SetState(MineState state)
-    {
-        MineData.State = state;
-    }
-
-    public bool GetIsNotAllowedToBeBomb()
-    {
-        return MineData.IsNotAllowedToBeBomb;
-    }
-
-    public void Reset()
+    public bool GetIsMine() => MineData.IsMine;
+    public void AddOneToMinesInNear(int bombcount) => MineData.MinesInNear += bombcount;
+    public MineState GetState() => MineData.State;
+    public void SetState(MineState state)=> MineData.State = state;
+    public bool GetIsNotAllowedToBeBomb() => MineData.IsNotAllowedToBeBomb;
+    public void SetPosition(int position) => MineData.Position = position;
+    private void SetFlag() => MineData.State = MineState.mineFlag;
+    private void RemoveFlag() => MineData.State = MineState.mine;
+    
+    public void ResetMine() 
     {
         MineData.IsMine = false;
         MineData.State = MineState.mine;
         MineData.MinesInNear = 0;
-    }
-
-    public void SetPosition(int position)
-    {
-        MineData.Position = position;
+        MineData.IsNotAllowedToBeBomb = false;
     }
     
     public void Fill(int i, int j)
@@ -144,13 +124,14 @@ public class Mine : MonoBehaviour
             controllerScript.openAllBombs();
             MineData.State = MineState.redbomb;
         }
-
-        //Debug.Log(controllerScript.Spielzüge + " Spielzüge");
-        return;
     }
 
     public void ProveClick()
     {
+        if(controllerScript.GetFirstClick())
+            if (controllerScript.isFlagMode)
+                return;
+        
         if (Input.GetMouseButton(0))
         {
             if (controllerScript.Alreadyclicked)
@@ -183,10 +164,13 @@ public class Mine : MonoBehaviour
 
                 int i, j;
                 controllerScript.GetMinePosIJ(this, out i, out j);
-                
+
                 if (controllerScript.GetAndNegateFirstClick())
+                {
                     SetIsNotAllowedToBeBomb(i, j);
-                
+                    controllerScript.InsertMines();
+                }
+
                 Fill(i, j);
                 controllerScript.Alreadyclicked = false;
             }else if (MineData.State == MineState.flagclicked)
@@ -201,18 +185,6 @@ public class Mine : MonoBehaviour
         }
     }
 
-
-    private void SetFlag()
-    {
-        MineData.State = MineState.mineFlag;
-    }
-
-    private void RemoveFlag()
-    {
-        MineData.State = MineState.mine;
-            Debug.Log("remove");
-    }
-
     private void SetIsNotAllowedToBeBomb(int i, int j)
     {
         SafeSetIsNotAllowedToBeBomb(i,j);
@@ -224,9 +196,6 @@ public class Mine : MonoBehaviour
         SafeSetIsNotAllowedToBeBomb(i - 1, j - 1);
         SafeSetIsNotAllowedToBeBomb(i + 1, j - 1); 
         SafeSetIsNotAllowedToBeBomb(i - 1, j + 1);
-
-        controllerScript.GameStart();
-        
     }
 
     public void SafeSetIsNotAllowedToBeBomb(int i, int j)
@@ -242,7 +211,7 @@ public class Mine : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (controllerScript.spielendeMessage)
+        if (controllerScript.gameOverMessage)
             return;
 
         ProveClick();
@@ -253,12 +222,7 @@ public class Mine : MonoBehaviour
         exit = true;
     }
 
-    public void SetIsMine()
-    {
-        MineData.IsMine = true;
-    }
-
-
+    public void SetIsMine() =>  MineData.IsMine = true;
     private void Awake()
     {
         controllerScript = GameObject.Find("GameController").GetComponent<GameController>();
@@ -266,16 +230,9 @@ public class Mine : MonoBehaviour
         MineData.State = MineState.mine;
         fillMineInstance = this;
     }
-
-    // Start is called before the firstFillCall frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (controllerScript.gameOver && !controllerScript.spielendeMessage)
+        if (controllerScript.gameOver && !controllerScript.gameOverMessage)
         {
             if (controllerScript.gewonnen)
             {
@@ -284,10 +241,8 @@ public class Mine : MonoBehaviour
             }
             else
                 Debug.Log("Verloren!");
-
-
-            controllerScript.spielendeMessage = true;
-
+            
+            controllerScript.gameOverMessage = true;
             return;
         }
 
@@ -300,10 +255,6 @@ public class Mine : MonoBehaviour
                 {
                     MineData.State = MineState.mine;
                 }
-            }
-            else
-            {
-                return;
             }
         }
     }

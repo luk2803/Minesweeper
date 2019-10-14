@@ -58,7 +58,7 @@
   <ItemGroup>
      <Compile Include="Assets\Foggy Mountains Background\Demo\BackgroundHelper.cs" />
      <Compile Include="Assets\Scripts C#\CameraScript.cs" />
-     <Compile Include="Assets\Scripts C#\CanvasScripts.cs" />
+     <Compile Include="Assets\Scripts C#\GameCanvasScript.cs" />
      <Compile Include="Assets\Scripts C#\GameController.cs" />
      <Compile Include="Assets\Scripts C#\IMineData.cs" />
      <Compile Include="Assets\Scripts C#\MenüScript.cs" />

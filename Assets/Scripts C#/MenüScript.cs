@@ -8,8 +8,6 @@ using Object = System.Object;
 
 public class MenüScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject gameController;
     private GameController controllerScript;
     private List<InputField> spielFeldData = new List<InputField>();
@@ -27,7 +25,6 @@ public class MenüScript : MonoBehaviour
 
     public void PlayGame()
     {
-       
         if (CheckAllCorrect())
         {
             newSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
@@ -38,20 +35,12 @@ public class MenüScript : MonoBehaviour
             controllerScript.length_x = int.Parse(spielFeldData[0].text);
             controllerScript.length_y = int.Parse(spielFeldData[1].text);
             controllerScript.anzmines = int.Parse(spielFeldData[2].text);
-
             
-            // SceneManager.MoveGameObjectToScene(gameController, game);
             DontDestroyOnLoad(gameController);
             SceneManager.UnloadScene(newSceneIndex-1);
         }
         else
             ResetInputFields();
-        
-    }
-
-    public bool CheckAvailable(string input)
-    {
-        return input != "";
     }
 
     public bool CheckNumber(string input)
@@ -86,16 +75,14 @@ public class MenüScript : MonoBehaviour
                 Debug.Log(input.name + ": 01");
                 return false;
             }
-                              
         }
 
         if (!CheckValidNumbers())
             return false;
-        
-
         return true;
     }
 
+    public bool CheckAvailable(string input) => input != "";
     public bool CheckValidNumbers()
     {
         int lengthx = int.Parse(spielFeldData[0].text);

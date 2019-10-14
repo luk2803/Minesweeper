@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Vector3 cameraPosition;
     private Camera cameraInstance;
     void Awake()
@@ -14,9 +13,6 @@ public class CameraScript : MonoBehaviour
         GameObject.Find("GameController").GetComponent<GameController>().Load();
         cameraPosition = cameraInstance.transform.position;
     }
-
-   
-
     public void createCameraSettings(int spielfeld_length_x, int spielfeld_length_y)
     {
         float mineLength = 1.2f;
@@ -28,12 +24,9 @@ public class CameraScript : MonoBehaviour
         cameraInstance.orthographicSize = longerSide * 0.75f;
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         MouseScroll();
-
     }
 
     private void MouseScroll()
@@ -46,10 +39,7 @@ public class CameraScript : MonoBehaviour
 
         int XAddToCameraPos = (mousePosition.x > 0.5) ? 1: -1;
         int YAddToCameraPos = (mousePosition.y > 0.5) ? 1: -1;
-        
-        
-        Debug.Log(mousePosition);
-        
+
         Vector3 midOfCameraPostition = new Vector3(camPos.x / 2, camPos.y / 2, camPos.y);
         
         if (mouseWheelDirection > 0f) //forward
@@ -65,7 +55,5 @@ public class CameraScript : MonoBehaviour
             transform.position =new Vector3(camPos.x- XAddToCameraPos, camPos.y - YAddToCameraPos, camPos.z);
 
         }
-
-      
     }
 }

@@ -13,7 +13,7 @@
         </e>
         <e p="Scripts C#" t="Include">
           <e p="CameraScript.cs" t="Include" />
-          <e p="CanvasScripts.cs" t="Include" />
+          <e p="GameCanvasScript.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="IMineData.cs" t="Include" />
           <e p="MenüScript.cs" t="Include" />
