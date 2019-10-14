@@ -13,8 +13,9 @@ public class GameController : MonoBehaviour
     // Zoom in richtung
     // Zähler von Bomben
     // Design überarbeiten
-    
+
     public bool gameOver = false;
+
     //public Sprite mineClicked;
     //public Sprite mine;
     //public Sprite openbomb;
@@ -41,6 +42,7 @@ public class GameController : MonoBehaviour
     {
         return advancedMines;
     }
+
     public List<Sprite> GetOpenMines()
     {
         return openMines;
@@ -97,9 +99,7 @@ public class GameController : MonoBehaviour
             if (m.GetIsMine())
             {
                 m.SetState(MineState.bomb);
-
             }
-
         }
     }
 
@@ -109,6 +109,7 @@ public class GameController : MonoBehaviour
             return 1;
         return 0;
     }
+
     public void SetNumbers()
     {
         for (int i = 0; i < spielfeld.GetLength(0); i++)
@@ -121,55 +122,33 @@ public class GameController : MonoBehaviour
                 }
 
                 SetMinesInNear(i, j);
-
-
             }
         }
     }
 
     private void SetMinesInNear(int i, int j)
     {
+        Mine mine = spielfeld[i, j];
+
+        SafeAddToMinesInNear(mine, i + 1, j);
+        SafeAddToMinesInNear(mine, i - 1, j);
+        SafeAddToMinesInNear(mine, i, j - 1);
+        SafeAddToMinesInNear(mine, i, j + 1);
+        SafeAddToMinesInNear(mine, i + 1, j + 1);
+        SafeAddToMinesInNear(mine, i - 1, j - 1);
+        SafeAddToMinesInNear(mine, i + 1, j - 1);
+        SafeAddToMinesInNear(mine, i - 1, j + 1);
+    }
+
+    public void SafeAddToMinesInNear(Mine m, int i, int j)
+    {
         try
         {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j]));
+            m.AddOneToMinesInNear(isbomb(spielfeld[i, j]));
         }
         catch
-        { }
-        try
         {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j]));
         }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j + 1]));
-        }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j - 1]));
-        }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i + 1, j - 1]));
-        }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i - 1, j + 1]));
-        }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i, j + 1]));
-        }
-        catch { }
-        try
-        {
-            spielfeld[i, j].AddOneToMinesInNear(isbomb(spielfeld[i, j - 1]));
-        }
-        catch { }
     }
 
     public void ResetMines()
@@ -198,7 +177,6 @@ public class GameController : MonoBehaviour
 
     public void GameStart()
     {
-
         Spielzüge = 0;
         int c = spielfeld.Length;
 
@@ -214,22 +192,20 @@ public class GameController : MonoBehaviour
                     i--;
             else
                 i--;
-
         }
 
         SetNumbers();
-
     }
 
     // Start is called before the first frame update
     public void Load() //wird in CameraScript aufgerufen
     {
-        this.cameraScript = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-        
+        this.cameraScript = GameObject.Find("MainCamera").GetComponent<CameraScript>();
+
         gameController = this.gameObject;
 
         spielfeld = new Mine[length_x, length_y];
-        int zählerInsgesamt = 0; 
+        int zählerInsgesamt = 0;
         int zählerLänge = 0;
         int zählerBreite = 0;
         float längeBreiteDerMine = 1.2f;
@@ -239,28 +215,29 @@ public class GameController : MonoBehaviour
             zählerBreite = 0;
             for (float y = 0; zählerBreite < length_y; y += längeBreiteDerMine)
             {
-                spielfeld[zählerLänge, zählerBreite] = Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity, gameController.transform).GetComponent<Mine>();
+                spielfeld[zählerLänge, zählerBreite] =
+                    Instantiate(myPrefab, new Vector3(x, y, 0), Quaternion.identity, gameController.transform)
+                        .GetComponent<Mine>();
                 spielfeld[zählerLänge, zählerBreite].SetPosition(zählerInsgesamt);
 
                 zählerInsgesamt++;
                 zählerBreite++;
             }
+
             zählerLänge++;
         }
-        cameraScript.createCameraSettings(length_x, length_y);
 
+        cameraScript.createCameraSettings(length_x, length_y);
     }
 
 
     void Start()
     {
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
     }
 }

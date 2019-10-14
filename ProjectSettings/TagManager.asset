@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - Mine
-  - 
-  - 
+  - Background
+  - Buttons
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Mine
     uniqueID: 2438035951
+    locked: 0
+  - name: Buttons
+    uniqueID: 3311670009
     locked: 0
   - name: Background
     uniqueID: 224289319

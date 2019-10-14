@@ -15,7 +15,7 @@ public class MenüScript : MonoBehaviour
     private List<InputField> spielFeldData = new List<InputField>();
     private int newSceneIndex;
     private Scene spielfeld;
-
+    
     void Awake()
     {
         spielFeldData.Add(GameObject.Find("Input_X").GetComponent<InputField>());
@@ -86,7 +86,24 @@ public class MenüScript : MonoBehaviour
                 Debug.Log(input.name + ": 01");
                 return false;
             }
+                              
         }
+
+        if (!CheckValidNumbers())
+            return false;
+        
+
+        return true;
+    }
+
+    public bool CheckValidNumbers()
+    {
+        int lengthx = int.Parse(spielFeldData[0].text);
+        int lenghty = int.Parse(spielFeldData[1].text);
+        int anzBombs = int.Parse(spielFeldData[2].text);
+
+        if(lenghty * lengthx <= anzBombs)
+            return false;
 
         return true;
     }

@@ -54,7 +54,7 @@ public class Mine : MonoBehaviour
     {
         MineData.Position = position;
     }
-
+    
     public void Fill(int i, int j)
     {
         if (firstFillCall)
@@ -67,33 +67,9 @@ public class Mine : MonoBehaviour
         }
         else
         {
-            try
-            {
-                fillMineInstance = controllerScript.GetSpielFeld()[i, j];
-            }
-            catch
-            {
+            SetFillMineInstance(i,j);
+            if (DemolitionConditionsAndMineOpen())
                 return;
-            }
-
-            if (fillMineInstance == null)
-            {
-                return;
-            }
-
-            if (fillMineInstance.MineData.State != MineState.mine)
-            {
-                return;
-            }
-
-            if (fillMineInstance.MineData.State == MineState.mineFlag)
-                return;
-
-            fillMineInstance.Open();
-            if (fillMineInstance.MineData.MinesInNear != 0)
-            {
-                return;
-            }
         }
 
         Fill(i + 1, j);
@@ -104,6 +80,38 @@ public class Mine : MonoBehaviour
         Fill(i + 1, j - 1);
         Fill(i - 1, j - 1);
         Fill(i - 1, j + 1);
+    }
+
+    public void SetFillMineInstance(int i, int j)
+    {
+        try
+        {
+            fillMineInstance = controllerScript.GetSpielFeld()[i, j];
+        }
+        catch
+        {
+            fillMineInstance = null;
+        }
+    }
+    
+    public bool DemolitionConditionsAndMineOpen()
+    {
+        if (controllerScript.gameOver == true)
+            return true;
+        if (fillMineInstance == null)
+            return true;
+        if (fillMineInstance.MineData.State != MineState.mine)
+            return true;
+        if (fillMineInstance.MineData.State == MineState.mineFlag)
+            return true;
+       
+
+        fillMineInstance.Open();
+
+        if (fillMineInstance.MineData.MinesInNear != 0)
+            return true;
+
+        return false;
     }
 
     public static bool Compare(Mine m, Mine mine)
@@ -159,8 +167,8 @@ public class Mine : MonoBehaviour
             }
             else if (MineData.State == MineState.mineFlag && controllerScript.isFlagMode)
             {
-             RemoveFlag();
-                controllerScript.Alreadyclicked = true;
+             RemoveFlag(); 
+             controllerScript.Alreadyclicked = true;
             }
         }
         else
@@ -175,8 +183,10 @@ public class Mine : MonoBehaviour
 
                 int i, j;
                 controllerScript.GetMinePosIJ(this, out i, out j);
-
-                IsNotAllowedToBeBomb(i, j);
+                
+                if (controllerScript.GetAndNegateFirstClick())
+                    SetIsNotAllowedToBeBomb(i, j);
+                
                 Fill(i, j);
                 controllerScript.Alreadyclicked = false;
             }else if (MineData.State == MineState.flagclicked)
@@ -203,83 +213,30 @@ public class Mine : MonoBehaviour
             Debug.Log("remove");
     }
 
-    private void IsNotAllowedToBeBomb(int i, int j)
+    private void SetIsNotAllowedToBeBomb(int i, int j)
     {
-        if (controllerScript.GetAndNegateFirstClick())
+        SafeSetIsNotAllowedToBeBomb(i,j);
+        SafeSetIsNotAllowedToBeBomb(i + 1, j + 1);
+        SafeSetIsNotAllowedToBeBomb(i +1, j);
+        SafeSetIsNotAllowedToBeBomb(i - 1, j);
+        SafeSetIsNotAllowedToBeBomb(i, j + 1);
+        SafeSetIsNotAllowedToBeBomb(i, j - 1);
+        SafeSetIsNotAllowedToBeBomb(i - 1, j - 1);
+        SafeSetIsNotAllowedToBeBomb(i + 1, j - 1); 
+        SafeSetIsNotAllowedToBeBomb(i - 1, j + 1);
+
+        controllerScript.GameStart();
+        
+    }
+
+    public void SafeSetIsNotAllowedToBeBomb(int i, int j)
+    {
+        try
         {
-            try
-            {
-                controllerScript.GetSpielFeld()[i, j].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i + 1, j].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i - 1, j].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i, j + 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i, j - 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i - 1, j - 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i + 1, j - 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i - 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                controllerScript.GetSpielFeld()[i + 1, j + 1].MineData.IsNotAllowedToBeBomb = true;
-            }
-            catch
-            {
-            }
-
-            controllerScript.GameStart();
+            controllerScript.GetSpielFeld()[i, j].MineData.IsNotAllowedToBeBomb = true;
+        }
+        catch
+        {
         }
     }
 
