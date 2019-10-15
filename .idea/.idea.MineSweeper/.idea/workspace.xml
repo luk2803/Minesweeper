@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58637e39-333b-4031-beda-59543e552cd2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenüScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenüScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/CanvasScripts.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/CanvasScripts.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" afterDir="false" />
@@ -22,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/51/5142637a82ed39b4aa6f6f97913aeb19" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/51/5142637a82ed39b4aa6f6f97913aeb19" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/94/94c33be6ea6d525438d000887657bf2b" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/94/94c33be6ea6d525438d000887657bf2b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" afterDir="false" />
@@ -61,8 +55,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" />
       </list>
@@ -75,6 +69,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -123,6 +118,7 @@
       <workItem from="1570612799967" duration="5324000" />
       <workItem from="1571034957232" duration="1976000" />
       <workItem from="1571040704207" duration="11835000" />
+      <workItem from="1571122153230" duration="11740000" />
     </task>
     <servers />
   </component>

@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     // Zoom in richtung
     // Zähler von Bomben
     // Design überarbeiten
-    
+
     public List<Sprite> advancedMines = new List<Sprite>();
     public List<Sprite> openMines = new List<Sprite>();
     static Random rnd = new Random();
@@ -26,15 +26,17 @@ public class GameController : MonoBehaviour
     public bool gewonnen;
     public bool gameOverMessage;
     private bool firstClick;
-    public bool isFlagMode;
-    public bool Alreadyclicked { get; set; } 
+    private bool isFlagMode = false;
+    public bool Alreadyclicked { get; set; }
     private int Spielzüge;
-    
+    private bool gameCanvasInitialised = false;
+
     private Mine[,] spielfeld;
     private GameObject gameController;
     public GameObject myPrefab;
     private CameraScript cameraScript;
-  
+    private GameObject gameCanvas;
+    private GameCanvasScript gameCanvasScript;
 
     public bool GetAndNegateFirstClick()
     {
@@ -43,15 +45,27 @@ public class GameController : MonoBehaviour
             firstClick = false;
             return true;
         }
+
         return false;
     }
+
+    public void SetIsFlagMode(bool state)
+    {
+        isFlagMode = state;
+        if (state)
+            gameCanvasScript.SetButtonColor(GameCanvasScript.grey);
+        else
+            gameCanvasScript.SetButtonColor(GameCanvasScript.white);
+    }
+
+    public bool GetIsFlagMode() => isFlagMode;
     public List<Sprite> GetAdvancedMines() => advancedMines;
     public List<Sprite> GetOpenMines() => openMines;
     public bool GetFirstClick() => firstClick;
     public Mine[,] GetSpielFeld() => spielfeld;
     public int GetSpielZüge() => Spielzüge;
     public void AddSpielZug() => Spielzüge++;
-    
+
     public bool GetMinePosIJ(Mine m, out int i, out int j)
     {
         j = 0;
@@ -152,15 +166,14 @@ public class GameController : MonoBehaviour
 
         return null;
     }
-    
+
     public void ResetGame()
     {
-       
+        ResetMines();
         gameOver = false;
         gewonnen = false;
         gameOverMessage = false;
         firstClick = true;
-        isFlagMode = false;
         Alreadyclicked = false;
         Spielzüge = 0;
     }
@@ -168,7 +181,7 @@ public class GameController : MonoBehaviour
     public void InsertMines()
     {
         int c = spielfeld.Length;
-        
+
         for (int i = 0; i < anzmines; i++)
         {
             Mine m = GetMine(rnd.Next(0, c));
@@ -180,21 +193,29 @@ public class GameController : MonoBehaviour
             else
                 i--;
         }
-
         SetNumbers();
     }
-    public void Load() //wird in CameraScript aufgerufen
+
+    public void LoadGameCanvas() // wird in GameCanvasScript.Awake aufgerufen
     {
-        ResetGame();
+        this.gameCanvas = GameObject.Find("GameCanvas");
+        gameCanvasScript = gameCanvas.GetComponent<GameCanvasScript>();
+        gameCanvasInitialised = true;
+    }
+
+    public void LoadCamera() //wird in CameraScript.Awake aufgerufen 
+    {
         this.cameraScript = GameObject.Find("MainCamera").GetComponent<CameraScript>();
-
         gameController = this.gameObject;
+    }
 
+    public void InstantiateMines() //wird in CameraScript.Awake aufgerufen 
+    {
         spielfeld = new Mine[length_x, length_y];
         int zählerInsgesamt = 0;
         int zählerLänge = 0;
-        int zählerBreite = 0;
-        float längeBreiteDerMine = 1.2f;
+        int zählerBreite;
+        float längeBreiteDerMine = 1.15f;
 
         for (float x = 0; zählerLänge < length_x; x += längeBreiteDerMine)
         {
@@ -213,6 +234,28 @@ public class GameController : MonoBehaviour
             zählerLänge++;
         }
 
+        ResetGame();
+
         cameraScript.createCameraSettings(length_x, length_y);
+    }
+    
+    
+
+    public void Update()
+    {
+        if (!gameCanvasInitialised)
+                return;
+        
+        bool isControlDown = Input.GetKeyDown(KeyCode.LeftControl);
+        bool isControlUp = Input.GetKeyUp(KeyCode.LeftControl);
+
+        if (!gameCanvasScript.ButtonActivatedByToggle)
+        {
+            if (isControlDown)
+                SetIsFlagMode(true);
+            if (isControlUp)
+                SetIsFlagMode(false);
+        }
+
     }
 }

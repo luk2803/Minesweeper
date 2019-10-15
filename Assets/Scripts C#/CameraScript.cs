@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -9,8 +10,12 @@ public class CameraScript : MonoBehaviour
     private Camera cameraInstance;
     void Awake()
     {
+        GameController controllerScript;
         cameraInstance =  this.GetComponent<Camera>();
-        GameObject.Find("GameController").GetComponent<GameController>().Load();
+        controllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+        controllerScript.LoadCamera();
+        controllerScript.InstantiateMines();
+        
         cameraPosition = cameraInstance.transform.position;
     }
     public void createCameraSettings(int spielfeld_length_x, int spielfeld_length_y)

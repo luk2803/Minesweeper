@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    private MineData MineData { get; set; }
+    public MineData MineData { get; set; }
     private GameController controllerScript;
 
     private bool exit = false;
@@ -27,8 +27,10 @@ public class Mine : MonoBehaviour
     private void SetFlag() => MineData.State = MineState.mineFlag;
     private void RemoveFlag() => MineData.State = MineState.mine;
     
-    public void ResetMine() 
+    public void ResetMine()
     {
+        fillMineInstance = this;
+        firstFillCall = true;
         MineData.IsMine = false;
         MineData.State = MineState.mine;
         MineData.MinesInNear = 0;
@@ -109,14 +111,7 @@ public class Mine : MonoBehaviour
             controllerScript.AddSpielZug();
 
             MineData.State = (MineState) MineData.MinesInNear;
-
-
-            if (controllerScript.GetSpielZüge() ==
-                controllerScript.GetSpielFeld().Length - controllerScript.anzmines)
-            {
-                controllerScript.gewonnen = true;
-                controllerScript.gameOver = true;
-            }
+            ProveGameOver();
         }
         else
         {
@@ -125,11 +120,20 @@ public class Mine : MonoBehaviour
             MineData.State = MineState.redbomb;
         }
     }
+    public void ProveGameOver()
+    {
+        if (controllerScript.GetSpielZüge() ==
+            controllerScript.GetSpielFeld().Length - controllerScript.anzmines)
+        {
+            controllerScript.gewonnen = true;
+            controllerScript.gameOver = true;
+        }
+    }
 
     public void ProveClick()
     {
         if(controllerScript.GetFirstClick())
-            if (controllerScript.isFlagMode)
+            if (controllerScript.GetIsFlagMode())
                 return;
         
         if (Input.GetMouseButton(0))
@@ -139,14 +143,14 @@ public class Mine : MonoBehaviour
 
             if (MineData.State == MineState.mine)
             {
-                if (controllerScript.isFlagMode)
+                if (controllerScript.GetIsFlagMode())
                     MineData.State = MineState.flagclicked;
                 else
                     MineData.State = MineState.clicked;
                 
                 controllerScript.Alreadyclicked = true;
             }
-            else if (MineData.State == MineState.mineFlag && controllerScript.isFlagMode)
+            else if (MineData.State == MineState.mineFlag && controllerScript.GetIsFlagMode())
             {
              RemoveFlag(); 
              controllerScript.Alreadyclicked = true;
@@ -156,7 +160,7 @@ public class Mine : MonoBehaviour
         {
             if (MineData.State == MineState.clicked)
             {
-                if (controllerScript.isFlagMode)
+                if (controllerScript.GetIsFlagMode())
                 {
                     SetFlag();
                     return;
@@ -169,8 +173,9 @@ public class Mine : MonoBehaviour
                 {
                     SetIsNotAllowedToBeBomb(i, j);
                     controllerScript.InsertMines();
+                 
                 }
-
+               
                 Fill(i, j);
                 controllerScript.Alreadyclicked = false;
             }else if (MineData.State == MineState.flagclicked)
@@ -226,7 +231,7 @@ public class Mine : MonoBehaviour
     private void Awake()
     {
         controllerScript = GameObject.Find("GameController").GetComponent<GameController>();
-        MineData = new MineData(this, controllerScript);
+        MineData = new MineData(this,controllerScript.openMines,controllerScript.advancedMines);
         MineData.State = MineState.mine;
         fillMineInstance = this;
     }

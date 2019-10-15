@@ -13,24 +13,34 @@ public class GameCanvasScript : MonoBehaviour
     
     private GameController controllerScript;
     private Button toggleFlagButton; 
-    private Color white = new Color(1,1,1);
-    private Color grey = new Color(0.5283019f, 0.5283019f, 0.5283019f);
+    public static Color white = new Color(1,1,1);
+    public static Color grey = new Color(0.5283019f, 0.5283019f, 0.5283019f);
     private GameObject gameController;
+    public bool ButtonActivatedByToggle { get; private set; } = false;
+
     void Start()
     {
         gameController = GameObject.Find("GameController");
         controllerScript = gameController.GetComponent<GameController>();
         toggleFlagButton = GameObject.Find("ToggleFlagButton").GetComponent<Button>();
+        controllerScript.LoadGameCanvas();
     }
 
     public void ToggleFlag()
     {
-        controllerScript.isFlagMode = !controllerScript.isFlagMode;
-        Color color = controllerScript.isFlagMode ? grey : white;
+       
+        controllerScript.SetIsFlagMode(!controllerScript.GetIsFlagMode());
+        
+        if(controllerScript.GetIsFlagMode())
+            ButtonActivatedByToggle = true;
+        else 
+            ButtonActivatedByToggle = false;
+        
+        Color color = controllerScript.GetIsFlagMode() ? grey : white;
         SetButtonColor(color);
     }
 
-    private void SetButtonColor(Color color)
+    public void SetButtonColor(Color color)
     {
         var colors = toggleFlagButton.colors;
         colors.normalColor = color;
@@ -42,7 +52,6 @@ public class GameCanvasScript : MonoBehaviour
     {
         SetButtonColor(white);
         controllerScript.ResetGame();
-        controllerScript.ResetMines();
     }
 
     public void BackToMenu()

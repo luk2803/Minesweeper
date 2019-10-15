@@ -11,13 +11,15 @@ namespace Assets.Scripts_C_
 {
     public class MineData : IMineData
     {
-        public MineData(Mine mineInstance, GameController controllerInstance )
+        public MineData(Mine mineInstance, List<Sprite> openMines, List<Sprite> advancedMines)
         {
-            this.controllerInstance = controllerInstance;
             this.spriteRenderer = mineInstance.GetComponent<SpriteRenderer>();
+            this.openMines = openMines;
+            this.advancedMines = advancedMines;
         }
 
-        private GameController controllerInstance;
+        private List<Sprite> openMines;
+        private List<Sprite> advancedMines;
         private SpriteRenderer spriteRenderer;
         private int _position;
         public int Position
@@ -59,85 +61,85 @@ namespace Assets.Scripts_C_
                     case MineState.open:
                         {
                             _state = MineState.open;
-                            spriteRenderer.sprite = controllerInstance.openMines[0];
+                            spriteRenderer.sprite = openMines[0];
                             break;
                         }
                     case MineState.one:
                         {
                             _state = MineState.one;
-                            spriteRenderer.sprite = controllerInstance.openMines[1];
+                            spriteRenderer.sprite = openMines[1];
                             break;
                         }
                     case MineState.two:
                         {
                             _state = MineState.two;
-                            spriteRenderer.sprite = controllerInstance.openMines[2];
+                            spriteRenderer.sprite = openMines[2];
                             break;
                         }
                     case MineState.three:
                         {
                             _state = MineState.three;
-                            spriteRenderer.sprite = controllerInstance.openMines[3];
+                            spriteRenderer.sprite = openMines[3];
                             break;
                         }
                     case MineState.four:
                         {
                             _state = MineState.four;
-                            spriteRenderer.sprite = controllerInstance.openMines[4];
+                            spriteRenderer.sprite = openMines[4];
                             break;
                         }
                     case MineState.five:
                         {
                             _state = MineState.five;
-                            spriteRenderer.sprite = controllerInstance.openMines[5];
+                            spriteRenderer.sprite = openMines[5];
                             break;
                         }
                     case MineState.six:
                         {
                             _state = MineState.six;
-                            spriteRenderer.sprite = controllerInstance.openMines[6];
+                            spriteRenderer.sprite = openMines[6];
                             break;
                         }
                     case MineState.seven:
                         {
                             _state = MineState.seven;
-                            spriteRenderer.sprite = controllerInstance.openMines[7];
+                            spriteRenderer.sprite = openMines[7];
                             break;
                         }
                     case MineState.eight:
                         {
                             _state = MineState.eight;
-                            spriteRenderer.sprite = controllerInstance.openMines[8];
+                            spriteRenderer.sprite = openMines[8];
                             break;
                         }
                     case MineState.clicked:
                         {
                             _state = MineState.clicked;
-                            spriteRenderer.sprite = controllerInstance.advancedMines[0];
+                            spriteRenderer.sprite = advancedMines[0];
                             break;
                         }
                     case MineState.mine:
                         {
                             _state = MineState.mine;
-                            spriteRenderer.sprite = controllerInstance.advancedMines[1];
+                            spriteRenderer.sprite = advancedMines[1];
                             break;
                         }
                     case MineState.bomb:
                         {
                             _state = MineState.bomb;
-                            spriteRenderer.sprite = controllerInstance.advancedMines[2];
+                            spriteRenderer.sprite = advancedMines[2];
                             break;
                         }
                     case MineState.redbomb:
                         {
                             _state = MineState.redbomb;
-                            spriteRenderer.sprite = controllerInstance.advancedMines[3];
+                            spriteRenderer.sprite = advancedMines[3];
                             break;
                         }
                     case MineState.mineFlag:
                     {
                         _state = MineState.mineFlag;
-                        spriteRenderer.sprite = controllerInstance.advancedMines[4];
+                        spriteRenderer.sprite = advancedMines[4];
                         break;
                     }
                     case MineState.flagclicked:
@@ -151,6 +153,10 @@ namespace Assets.Scripts_C_
             }
         }
 
+        public override string ToString()
+        {
+            return $"Position: {Position}, MinesInNear: {MinesInNear}, IsMine: {IsMine}, IsNotAllowedToBeBomg: {IsNotAllowedToBeBomb}, MineState: {State.ToString()}";
 
+        }
     }
 }
