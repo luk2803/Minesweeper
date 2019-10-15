@@ -101,4 +101,33 @@ public class MenüScript : MonoBehaviour
             input.text = "";
     }
 
+    public void Preset5Times5()
+    {  
+        spielFeldData[0].text = "5"; 
+        spielFeldData[1].text = "5"; 
+        spielFeldData[2].text = "5";
+    }
+    
+
+    public void Preset16Times16()
+    {
+        spielFeldData[0].text = "16";
+        spielFeldData[1].text = "16";
+        spielFeldData[2].text = "40";
+    }
+
+    public void Preset30Times30()
+    {
+        spielFeldData[0].text = "30";
+        spielFeldData[1].text = "30";
+        spielFeldData[2].text = "90";
+    }
+    
+    public void Preset50Times50()
+    {
+        spielFeldData[0].text = "50";
+        spielFeldData[1].text = "50";
+        spielFeldData[2].text = "250";
+    }
+
 }

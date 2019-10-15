@@ -239,8 +239,6 @@ public class GameController : MonoBehaviour
         cameraScript.createCameraSettings(length_x, length_y);
     }
     
-    
-
     public void Update()
     {
         if (!gameCanvasInitialised)

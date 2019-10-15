@@ -39,9 +39,13 @@ public class CameraScript : MonoBehaviour
         float mouseWheelDirection = Input.GetAxis("Mouse ScrollWheel");
         float faktorOfZoom = 6;
 
-        Vector3 mousePosition = Input.mousePosition.normalized;
-        Vector3 camPos = cameraPosition; // 7,2 6,6 -1
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 camPos = cameraPosition; 
+      
+        
 
+        Vector3 righttop = cameraInstance.ViewportToWorldPoint(new Vector3(1,1,cameraInstance.nearClipPlane));        
+        Debug.Log(righttop);
         int XAddToCameraPos = (mousePosition.x > 0.5) ? 1: -1;
         int YAddToCameraPos = (mousePosition.y > 0.5) ? 1: -1;
 
