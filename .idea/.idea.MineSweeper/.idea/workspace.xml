@@ -5,20 +5,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/238ef5-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/238ef5-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/25/2569e942796e723408d22ec185e459d6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/43/432639818a99dd047ad1b2c9359f845e" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/43/432639818a99dd047ad1b2c9359f845e" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,17 +45,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E3232360-D51C-46C7-86DD-547E2F0B3F8B/af/df2cd0dd/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EF28F193-EAB6-4E49-B44B-3FB27EAB4F75/c6/b578fffd/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C41EAD7E-3C94-4E46-94ED-1120C7D00304/16/cc68fcb9/TextMesh.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ColorBlock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/ErrorMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/OptionScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/IMineData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E3232360-D51C-46C7-86DD-547E2F0B3F8B/5f/8c78c464/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/IMineData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -65,12 +69,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts C#/CanvasScripts.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/ErrorMessage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/OptionScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" />
       </list>
     </option>
   </component>
@@ -145,7 +150,7 @@
       <workItem from="1571144096333" duration="1330000" />
       <workItem from="1571306685498" duration="1040000" />
       <workItem from="1571309390606" duration="3746000" />
-      <workItem from="1571396487705" duration="2235000" />
+      <workItem from="1571396487705" duration="8457000" />
     </task>
     <servers />
   </component>

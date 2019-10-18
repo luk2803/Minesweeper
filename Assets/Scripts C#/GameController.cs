@@ -8,17 +8,14 @@ using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
-    //TODO
-    // Messagebox für Errors  / ErrorMessages im Menü
-    // Flaggen
-    // Zoom in richtung
-    // Zähler von Bomben
-    // Design überarbeiten
+    public static int MenüSceneBuildIndex = 0;
+    public static int GameSceneBuildIndex = 1;
+    public static int OptionsSceneBuildIndex = 2;
 
     public List<Sprite> advancedMines = new List<Sprite>();
     public List<Sprite> openMines = new List<Sprite>();
     static Random rnd = new Random();
-
+    
     public bool gameOver;
     public int anzmines;
     public int length_x = 0;

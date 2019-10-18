@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts C#\Mine.cs" />
      <Compile Include="Assets\Scripts C#\MineData.cs" />
      <Compile Include="Assets\Scripts C#\MineState.cs" />
+     <Compile Include="Assets\Scripts C#\OptionScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

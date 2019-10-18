@@ -8,8 +8,15 @@ using UnityEngine.UI;
 
 public class GameCanvasScript : MonoBehaviour
 {
-    //TODO 
+    //TODO
+    // Zoom in richtung
+    // Zähler von Bomben
     // Back und reset button in eigenes Menü legen.
+    
+    //Könnte verbessert werden: 
+       //ErrorMessage 
+       //Flaggen
+       // Design überarbeiten
     
     private GameController controllerScript;
     private Button toggleFlagButton; 
@@ -48,16 +55,11 @@ public class GameCanvasScript : MonoBehaviour
         toggleFlagButton.colors = colors;
     }
 
-    public void ResetBoard()
+    public void Update()  
     {
-        SetButtonColor(white);
-        controllerScript.ResetGame();
-    }
-
-    public void BackToMenu()
-    {
-        Destroy(gameController);
-        SceneManager.LoadScene(0);
+        bool isEscKeyDown = Input.GetKeyUp(KeyCode.Escape);
+        if (isEscKeyDown)
+            SceneManager.LoadScene(GameController.OptionsSceneBuildIndex);
     }
     
 }
