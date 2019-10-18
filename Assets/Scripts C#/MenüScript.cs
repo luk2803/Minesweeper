@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Object = System.Object;
 
 public class MenüScript : MonoBehaviour
@@ -13,7 +15,7 @@ public class MenüScript : MonoBehaviour
     private List<InputField> spielFeldData = new List<InputField>();
     private int newSceneIndex;
     private Scene spielfeld;
-    
+    private ErrorMessage errorMessage;
     void Awake()
     {
         spielFeldData.Add(GameObject.Find("Input_X").GetComponent<InputField>());
@@ -21,6 +23,8 @@ public class MenüScript : MonoBehaviour
         spielFeldData.Add(GameObject.Find("Input_AnzMines").GetComponent<InputField>());
 
         controllerScript = gameController.GetComponent<GameController>();
+        TextMeshProUGUI errorMessageLabel = GameObject.Find("ErrorMessage").GetComponent<TextMeshProUGUI>();
+        errorMessage = new ErrorMessage(errorMessageLabel);
     }
 
     public void PlayGame()
@@ -60,25 +64,29 @@ public class MenüScript : MonoBehaviour
         {
             if (!CheckAvailable(input.text))
             {
-                Debug.Log(input.name +": Available");
+                errorMessage.Show(ErrorMessage.NODATA);
                 return false;
             }
 
             if (!CheckNumber(input.text))
             {
-                Debug.Log(input.name + ": Number");
+                errorMessage.Show(ErrorMessage.INVALIDDATA);
                 return false;
             }
 
             if (input.text == "0" || input.text == "1")
             {
-                Debug.Log(input.name + ": 01");
+                errorMessage.Show(ErrorMessage.IMPOSSIBLEGAME);
                 return false;
             }
         }
 
         if (!CheckValidNumbers())
+        {
+            errorMessage.Show(ErrorMessage.IMPOSSIBLEGAME);
             return false;
+        }
+
         return true;
     }
 
@@ -89,9 +97,11 @@ public class MenüScript : MonoBehaviour
         int lenghty = int.Parse(spielFeldData[1].text);
         int anzBombs = int.Parse(spielFeldData[2].text);
 
-        if(lenghty * lengthx <= anzBombs)
+        int Percent80 = lenghty * lengthx / 100 * 80;
+        
+        if(anzBombs > Percent80)
             return false;
-
+            
         return true;
     }
 

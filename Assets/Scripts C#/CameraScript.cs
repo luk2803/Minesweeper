@@ -40,12 +40,9 @@ public class CameraScript : MonoBehaviour
         float faktorOfZoom = 6;
 
         Vector3 mousePosition = Input.mousePosition;
-        Vector3 camPos = cameraPosition; 
-      
-        
+        Vector3 camPos = cameraPosition;
+        Vector3 righttop = cameraInstance.ViewportToWorldPoint(new Vector3(1,1,cameraInstance.nearClipPlane));
 
-        Vector3 righttop = cameraInstance.ViewportToWorldPoint(new Vector3(1,1,cameraInstance.nearClipPlane));        
-        Debug.Log(righttop);
         int XAddToCameraPos = (mousePosition.x > 0.5) ? 1: -1;
         int YAddToCameraPos = (mousePosition.y > 0.5) ? 1: -1;
 

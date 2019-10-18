@@ -156,7 +156,6 @@ namespace Assets.Scripts_C_
         public override string ToString()
         {
             return $"Position: {Position}, MinesInNear: {MinesInNear}, IsMine: {IsMine}, IsNotAllowedToBeBomg: {IsNotAllowedToBeBomb}, MineState: {State.ToString()}";
-
         }
     }
 }

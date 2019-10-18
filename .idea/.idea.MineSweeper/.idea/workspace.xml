@@ -2,30 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58637e39-333b-4031-beda-59543e552cd2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineSweeper/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenüScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenüScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/c7e3e5-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/238ef5-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/238ef5-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/22/225e1d1386ef1b04c832e021885f1afb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/80/80f328af31c86944bbd69eef3d98f050" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/92/9232da2b85631a4468919ba8aea0e961" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ee/ee9aeac744ff74746a818d56cf1f708c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E3232360-D51C-46C7-86DD-547E2F0B3F8B/af/df2cd0dd/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ColorBlock.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/ErrorMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -50,18 +64,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts C#/IMineData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/CanvasScripts.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MineState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/Mine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/GameCanvasScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/MineData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/CameraScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts C#/MenüScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts C#/ErrorMessage.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1RblQk5s7fOr9OELyJHguCED41a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;sqlserver" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
@@ -97,6 +113,16 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -117,6 +143,9 @@
       <workItem from="1571040704207" duration="11835000" />
       <workItem from="1571122153230" duration="13501000" />
       <workItem from="1571144096333" duration="1330000" />
+      <workItem from="1571306685498" duration="1040000" />
+      <workItem from="1571309390606" duration="3746000" />
+      <workItem from="1571396487705" duration="2235000" />
     </task>
     <servers />
   </component>
